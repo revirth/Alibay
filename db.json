@@ -1,4 +1,46 @@
 {
-  users: [{id:1, username:'userA', password:'b', usertype:1},{id:2, username:'userB', password:'c', usertype:1}, {id:3, username:'sellerA', password:'d', usertype:2}, {id:4, username:'admin', password:'d', usertype:0}],
-  items: [{id:1, name:'Open Box 360fly 360° HD Video Camera (Second Generation) 16GB', price:'$99.99', sellerId:3, quantity:100, imgUrl:'https://i.ebayimg.com/images/g/VMMAAOSwNUtba01b/s-l300.jpg'},{id:2, name:'HP Elite UltraSlim PC (Intel Quad Core i5-4690s,16GB RAM, 180GB SSD, DVDRW, WiFi', price:'$359.99', sellerId:3, quantity:55, imgUrl:'https://i.ebayimg.com/images/g/jKsAAOSw7fBboeU6/s-l500.png'}],
+  "users": [
+    {
+      "id": 1,
+      "username": "userA",
+      "password": "b",
+      "usertype": 1
+    },
+    {
+      "id": 2,
+      "username": "userB",
+      "password": "c",
+      "usertype": 1
+    },
+    {
+      "id": 3,
+      "username": "sellerA",
+      "password": "d",
+      "usertype": 2
+    },
+    {
+      "id": 4,
+      "username": "admin",
+      "password": "d",
+      "usertype": 0
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Open Box 360fly 360° HD Video Camera (Second Generation) 16GB",
+      "price": "$99.99",
+      "sellerId": 3,
+      "quantity": 100,
+      "imgUrl": "https://i.ebayimg.com/images/g/VMMAAOSwNUtba01b/s-l300.jpg"
+    },
+    {
+      "id": 2,
+      "name": "HP Elite UltraSlim PC (Intel Quad Core i5-4690s,16GB RAM, 180GB SSD, DVDRW, WiFi",
+      "price": "$359.99",
+      "sellerId": 3,
+      "quantity": 55,
+      "imgUrl": "https://i.ebayimg.com/images/g/jKsAAOSw7fBboeU6/s-l500.png"
+    }
+  ]
 }
