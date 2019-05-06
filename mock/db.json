@@ -42,5 +42,25 @@
       "quantity": 55,
       "imgUrl": "https://i.ebayimg.com/images/g/jKsAAOSw7fBboeU6/s-l500.png"
     }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "itemId": 1,
+      "title": "cool",
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+      "userId": 1,
+      "rating": 5,
+      "created": "20190101 00:11:22"
+    },
+    {
+      "id": 2,
+      "itemId": 1,
+      "title": "bad",
+      "content": "bad bad bad ",
+      "userId": 2,
+      "rating": 1,
+      "created": "20190201 22:33:44"
+    }
   ]
 }
