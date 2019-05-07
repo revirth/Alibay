@@ -51,73 +51,6 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8000/items",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost:3000/items",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"items"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/items/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost:3000/items/1",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"items",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8000/reviews",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost:3000/reviews",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"reviews"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "localhost:3000/reviews/1",
 			"request": {
 				"method": "GET",
@@ -127,14 +60,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/reviews/1",
+					"raw": "localhost:3000/reviews/3",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"reviews",
-						"1"
+						"3"
 					]
 				}
 			},
@@ -174,7 +107,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/items",
+			"name": "/login",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -182,38 +115,78 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "name",
-							"value": "item name",
+							"key": "username",
+							"value": "aa",
 							"type": "text"
 						},
 						{
-							"key": "price",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "sellerId",
-							"value": "999",
-							"type": "text"
-						},
-						{
-							"key": "imgUrl",
-							"value": "http:/balblabla",
-							"type": "text"
-						},
-						{
-							"key": "quantity",
-							"value": "999",
+							"key": "password",
+							"value": "bb",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/items",
+					"raw": "localhost:4000/login",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "b",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
 					"path": [
 						"items"
 					]
@@ -222,7 +195,196 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/reviews",
+			"name": "/items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "item name {{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "{{$randomInt}}.{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "sellerId",
+							"value": "seller{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "imgUrl",
+							"value": "http://placekitten.com/200/{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/items/:itemId",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "item name {{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "{{$randomInt}}.{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "sellerId",
+							"value": "seller{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "imgUrl",
+							"value": "http://placekitten.com/200/{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/items/5cd1cfee9a1d3215de6aeffa",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"items",
+						"5cd1cfee9a1d3215de6aeffa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/items/:itemId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/items/5cd1c2381c9d440000ddd75f",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"items",
+						"5cd1c2381c9d440000ddd75f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/items/:itemId/reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/items/5cd1c2381c9d440000ddd75f/reviews",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"items",
+						"5cd1c2381c9d440000ddd75f",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/reviews",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reviews/:reviewId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/reviews/5cd1c7ad1c9d440000ddd761",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"reviews",
+						"5cd1c7ad1c9d440000ddd761"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reviews",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -231,39 +393,88 @@
 					"formdata": [
 						{
 							"key": "itemId",
-							"value": "2",
+							"value": "5cd1c2381c9d440000ddd75f",
 							"type": "text"
 						},
 						{
 							"key": "title",
-							"value": "it's good!`",
+							"value": "review title {{$randomInt}}",
 							"type": "text"
 						},
 						{
 							"key": "content",
-							"value": "I've never seen like this before ...",
+							"value": "review content {{$randomInt}}",
 							"type": "text"
 						},
 						{
 							"key": "userId",
-							"value": "2",
+							"value": "b",
 							"type": "text"
 						},
 						{
 							"key": "rating",
-							"value": "3",
+							"value": "{{$randomInt}}",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/reviews",
+					"raw": "localhost:4000/reviews",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reviews/:reviewId",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "itemId",
+							"value": "5cd1c2381c9d440000ddd75f",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "review title {{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "review content {{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "b",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/reviews/5cd1de9909d5f2193671c50e",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"reviews",
+						"5cd1de9909d5f2193671c50e"
 					]
 				}
 			},
