@@ -6,11 +6,11 @@ MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
     DB = client.db("alibay");
     USERS = DB.collection("users");
 
-    USERS.find({})
-      .toArray()
-      .then(res => {
-        console.log(res);
-      });
+    // in dev environment, select all users
+    process.env.NODE_ENV === "development" &&
+      USERS.find({})
+        .toArray()
+        .then(res => console.log(res));
   }
 );
 
