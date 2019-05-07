@@ -159,3 +159,34 @@ app.get("/reviews/:reviewId", upload.none(), async (req, res) => {
 
   res.send(doc);
 });
+
+app.post("/reviews", upload.none(), async (req, res) => {
+  console.log("TCL: /reviews", req.body);
+
+  let object = {
+    ...req.body,
+    rating: parseInt(req.body.rating)
+  };
+
+  await REVIEWS.insertOne(object);
+  res.send(resmsg(true, "review inserted"));
+});
+
+app.put("/reviews/:reviewId", upload.none(), async (req, res) => {
+  console.log("TCL: /review/:reviewId", req.params, req.body);
+
+  let object = {
+    ...req.body,
+    rating: parseInt(req.body.rating)
+  };
+
+  let doc = await REVIEWS.findOneAndUpdate(
+    { _id: ObjectId(req.params.reviewId) },
+    { $set: object },
+    { returnNewDocument: true }
+  );
+
+  console.log(doc);
+
+  doc["ok"] && res.send(resmsg(true, "review updated"));
+});
