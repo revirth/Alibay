@@ -71,6 +71,15 @@ app.post("/login", upload.none(), async (req, res) => {
   res.send(resmsg(true, "login success"));
 });
 
+app.get("/logout", upload.none(), (req, res) => {
+  console.log("TCL: /logout", req.body);
+
+  const sid = req.cookies.sid;
+  delete SESSIONS[sid];
+  res.clearCookie("sid");
+  res.send(resmsg(true, "logout success"));
+});
+
 app.post("/signup", upload.none(), async (req, res) => {
   console.log("TCL: /signup", req.body);
 

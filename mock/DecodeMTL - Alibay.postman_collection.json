@@ -140,6 +140,28 @@
 			"response": []
 		},
 		{
+			"name": "/logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "/signup",
 			"request": {
 				"method": "POST",
