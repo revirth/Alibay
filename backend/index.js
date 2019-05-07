@@ -1,16 +1,18 @@
 require("dotenv-expand")(require("dotenv").config());
 const MongoClient = require("mongodb").MongoClient;
-let DB, USERS;
+let DB, USERS, CONFIG;
 MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
   client => {
     DB = client.db("alibay");
-    USERS = DB.collection("users");
+    USERS = DB.collection("users"); // [{username:'a', password:'sha256...', usertype:1}]
+    CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
 
-    // in dev environment, select all users
+    // in dev environment, check MongoDB documents
+    let p1 = USERS.find({}).toArray();
+    let p2 = CONFIG.find({}).toArray();
+
     process.env.NODE_ENV === "development" &&
-      USERS.find({})
-        .toArray()
-        .then(res => console.log(res));
+      Promise.all([p1, p2]).then(arr => arr.map(res => console.log(res)));
   }
 );
 
