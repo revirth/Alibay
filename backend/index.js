@@ -42,8 +42,9 @@ app.post("/login", upload.none(), async (req, res) => {
 
   let query = { ...req.body, password: sha256(req.body.password) };
 
+  // find a user in Mongo
   let doc = await USERS.findOne(query);
-  console.log("TCL: /login -> users.findOne", doc);
+  console.log("TCL: /login -> USERS.findOne", doc);
 
   if (doc === null) {
     res.clearCookie("sid");
@@ -51,10 +52,29 @@ app.post("/login", upload.none(), async (req, res) => {
     return;
   }
 
+  // login
   let sid = "" + Math.floor(Math.random() * 1000000000000);
   SESSIONS[sid] = req.body.username;
   res.cookie("sid", sid);
   res.send(resmsg(true, "login success"));
+});
+
+app.post("/signup", upload.none(), async (req, res) => {
+  console.log("TCL: /signup", req.body);
+
+  // check the username
+  let doc = await USERS.findOne({ username: req.body.username });
+  console.log("TCL: /signup -> USERS.findOne", doc);
+
+  if (doc !== null) {
+    res.send(resmsg(false, "Username is already used"));
+    return;
+  }
+
+  // store userinfo in Mongo
+  let query = { ...req.body, password: sha256(req.body.password) };
+  await USERS.insertOne(query);
+  res.send(resmsg(true, "signup success"));
 });
 
 app.listen(4000, () => {
