@@ -1,0 +1,89 @@
+nav {
+	background-color: #E32B2B;
+overflow: hidden;
+padding: 1em;
+}
+nav a {
+	color: #FFF;
+}
+
+.navWide{
+	diplay:none;
+	margin:0 auto;
+}
+.navWide .wideDiv {
+	text-align: center;
+}
+.navWide .wideDiv .leftnav{
+	text-align: left;
+}
+
+.navWide .wideDiv a{
+	text-decoration: none;
+	transition:1000ms;
+	border-bottom:1px solid #E32B2B ;
+	display: inline-block;
+	padding: 0 1.5em;
+	padding-bottom:5px;
+}
+
+.navWide .wideDiv a:hover{
+	border-color:white;
+}
+
+.navNarrow p{
+	float:left;
+	color:#FFF;
+}
+.navNarrow p i{
+	float: right;
+cursor: pointer;
+color: #FFF;
+}
+
+.navNarrow .narrowLinks{
+	display:none;
+}
+
+.navNarrow .narrwoLinks a{
+	text-decoration: none;
+			transition:1000ms;
+			border-bottom:1px solid #E32B2B ;
+display: block;
+float: left;
+clear: left;
+padding: 0.5em 0;
+}
+
+.navNarrow .narrowLinks a:hover{
+	border-color:white;
+}
+
+.menus{
+	display:none;
+}
+.menus a{
+	text-decoration: none;
+	transition:1000ms;
+	border-bottom:1px solid #E32B2B ;
+	 display: block;
+		 float: left;
+		clear: left;
+		padding: 0.5em 0; 
+}
+.menus a:hover{
+	border-color:white;
+}
+
+
+@media (min-width:1023px){
+	nav .navWide{
+			display: block;
+	}
+
+}
+@media (min-width:1023px){
+	nav .navNarrow{
+			display:none;
+	}
+}
