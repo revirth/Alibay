@@ -28,12 +28,7 @@ sha256 = str =>
     .update(str)
     .digest("hex");
 
-resmsg = (st, msg) => {
-  return {
-    status: st,
-    message: msg
-  };
-};
+resmsg = (st, msg) => ({ status: st, message: msg });
 
 let SESSIONS = {};
 
@@ -72,7 +67,7 @@ app.post("/signup", upload.none(), async (req, res) => {
   }
 
   // store userinfo in Mongo
-  let query = { ...req.body, password: sha256(req.body.password) };
+  let query = { ...req.body, password: sha256(req.body.password), usertype: 1 };
   await USERS.insertOne(query);
   res.send(resmsg(true, "signup success"));
 });
