@@ -22,16 +22,19 @@ app.use("/images", express.static("uploads"));
 let cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-// let bodyParser = require("body-parser");
-// app.use(bodyParser.raw({ type: "*/*" }));
+let shajs = require("sha.js");
+sha256 = str =>
+  shajs("sha256")
+    .update(str)
+    .digest("hex");
 
-let sha256 = require("sha256");
 resmsg = (st, msg) => {
   return {
     status: st,
     message: msg
   };
 };
+
 let SESSIONS = {};
 
 app.post("/login", upload.none(), async (req, res) => {
