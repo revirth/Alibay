@@ -19,21 +19,25 @@ let SESSIONS = {};
 require("dotenv-expand")(require("dotenv").config());
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectId;
-let DB, USERS, CONFIG, ITEMS;
+let DB, USERS, CONFIG, ITEMS, REVIEWS;
 MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
   client => {
     DB = client.db("alibay");
     USERS = DB.collection("users"); // [{username:'a', password:'sha256...', usertype:1}]
     CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
     ITEMS = DB.collection("items");
+    REVIEWS = DB.collection("reviews");
 
     // in dev environment, check MongoDB documents
     let p1 = USERS.find({}).toArray();
     let p2 = CONFIG.find({}).toArray();
     let p3 = ITEMS.find({}).toArray();
+    let p4 = REVIEWS.find({}).toArray();
 
     process.env.NODE_ENV === "development" &&
-      Promise.all([p1, p2, p3]).then(arr => arr.map(res => console.log(res)));
+      Promise.all([p1, p2, p3, p4]).then(arr =>
+        arr.map(res => console.log(res))
+      );
 
     // start express server
     app.listen(4000, () => console.log("listening on port 4000"));
@@ -93,6 +97,32 @@ app.get("/items/:itemId", upload.none(), async (req, res) => {
 
   let _id = ObjectId(req.params.itemId);
   let doc = await ITEMS.findOne(_id);
+
+  res.send(doc);
+});
+
+app.get("/items/:itemId/reviews", upload.none(), async (req, res) => {
+  console.log("TCL: /items/:itemId/reviews", req.params);
+
+  let query = { itemId: req.params.itemId };
+  let docs = await REVIEWS.find(query).toArray();
+
+  res.send(docs);
+});
+
+app.get("/reviews", upload.none(), async (req, res) => {
+  console.log("TCL: /reviews", req.body);
+
+  let docs = await REVIEWS.find({}).toArray();
+
+  res.send(docs);
+});
+
+app.get("/reviews/:reviewId", upload.none(), async (req, res) => {
+  console.log("TCL: /items/:reviewId", req.params);
+
+  let _id = ObjectId(req.params.reviewId);
+  let doc = await REVIEWS.findOne(_id);
 
   res.send(doc);
 });
