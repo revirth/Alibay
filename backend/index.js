@@ -44,6 +44,11 @@ MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
   }
 );
 
+app.get("/users", async (req, res) => {
+  process.env.NODE_ENV === "development" &&
+    res.send(await USERS.find({}).toArray());
+});
+
 app.post("/login", upload.none(), async (req, res) => {
   console.log("TCL: /login", req.body);
 
