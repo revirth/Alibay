@@ -1,21 +1,3 @@
-require("dotenv-expand")(require("dotenv").config());
-const MongoClient = require("mongodb").MongoClient;
-let DB, USERS, CONFIG;
-MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
-  client => {
-    DB = client.db("alibay");
-    USERS = DB.collection("users"); // [{username:'a', password:'sha256...', usertype:1}]
-    CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
-
-    // in dev environment, check MongoDB documents
-    let p1 = USERS.find({}).toArray();
-    let p2 = CONFIG.find({}).toArray();
-
-    process.env.NODE_ENV === "development" &&
-      Promise.all([p1, p2]).then(arr => arr.map(res => console.log(res)));
-  }
-);
-
 let express = require("express");
 let app = express();
 let upload = require("multer")({ dest: __dirname + "/uploads/" });
@@ -33,6 +15,30 @@ sha256 = str =>
 resmsg = (st, msg) => ({ status: st, message: msg });
 
 let SESSIONS = {};
+
+require("dotenv-expand")(require("dotenv").config());
+const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectId;
+let DB, USERS, CONFIG, ITEMS;
+MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
+  client => {
+    DB = client.db("alibay");
+    USERS = DB.collection("users"); // [{username:'a', password:'sha256...', usertype:1}]
+    CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
+    ITEMS = DB.collection("items");
+
+    // in dev environment, check MongoDB documents
+    let p1 = USERS.find({}).toArray();
+    let p2 = CONFIG.find({}).toArray();
+    let p3 = ITEMS.find({}).toArray();
+
+    process.env.NODE_ENV === "development" &&
+      Promise.all([p1, p2, p3]).then(arr => arr.map(res => console.log(res)));
+
+    // start express server
+    app.listen(4000, () => console.log("listening on port 4000"));
+  }
+);
 
 app.post("/login", upload.none(), async (req, res) => {
   console.log("TCL: /login", req.body);
@@ -74,6 +80,19 @@ app.post("/signup", upload.none(), async (req, res) => {
   res.send(resmsg(true, "signup success"));
 });
 
-app.listen(4000, () => {
-  console.log("listening on port 4000");
+app.get("/items", upload.none(), async (req, res) => {
+  console.log("TCL: /items", req.body);
+
+  let docs = await ITEMS.find({}).toArray();
+
+  res.send(docs);
+});
+
+app.get("/items/:itemId", upload.none(), async (req, res) => {
+  console.log("TCL: /items/:itemId", req.params);
+
+  let _id = ObjectId(req.params.itemId);
+  let doc = await ITEMS.findOne(_id);
+
+  res.send(doc);
 });
