@@ -110,6 +110,39 @@ app.get("/items/:itemId/reviews", upload.none(), async (req, res) => {
   res.send(docs);
 });
 
+app.post("/items", upload.none(), async (req, res) => {
+  console.log("TCL: /items", req.body);
+
+  let object = {
+    ...req.body,
+    price: parseFloat(req.body.price),
+    quantity: parseInt(req.body.quantity)
+  };
+
+  await ITEMS.insertOne(object);
+  res.send(resmsg(true, "item inserted"));
+});
+
+app.put("/items/:itemId", upload.none(), async (req, res) => {
+  console.log("TCL: /items/:itemId", req.params, req.body);
+
+  let object = {
+    ...req.body,
+    price: parseFloat(req.body.price),
+    quantity: parseInt(req.body.quantity)
+  };
+
+  let doc = await ITEMS.findOneAndUpdate(
+    { _id: ObjectId(req.params.itemId) },
+    { $set: object },
+    { returnNewDocument: true }
+  );
+
+  console.log(doc);
+
+  doc["ok"] && res.send(resmsg(true, "item updated"));
+});
+
 app.get("/reviews", upload.none(), async (req, res) => {
   console.log("TCL: /reviews", req.body);
 
