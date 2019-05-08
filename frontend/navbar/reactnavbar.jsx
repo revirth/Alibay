@@ -19,6 +19,7 @@ class Links extends React.Component {
 				<a href="#">DELIVERY</a>
 				<a href="#">ABOUT</a>
 				<a href="#">LOGIN</a>
+				<a href="#">SIGNUP</a>
 				<a href="#"><i className="fa fa-search fa-2x"></i></a>
 			</div>
 		);
@@ -38,9 +39,9 @@ class Navbar extends React.Component {
 				</div>
 				<div className="menus"
 					onClick={this.menuToggle}>
-					<a href="#" onClick={this.menuToggle}>WEEKLY</a>
-					<a href="#" onClick={this.menuToggle}>FITNESS</a>
-					<a href="#" onClick={this.menuToggle}>COOKED</a>
+					<a href="#" onClick={this.menuToggle} onClick={this.toggle}>WEEKLY</a>
+					<a href="#" onClick={this.menuToggle} onClick={this.toggle}>FITNESS</a>
+					<a href="#" onClick={this.menuToggle} onClick={this.toggle}>COOKED</a>
 				</div>
 				<div className="navNarrow" onClick={this.toggle}>
 					<span> <i className="fas fa-hamburger fa-2x"></i></span>
