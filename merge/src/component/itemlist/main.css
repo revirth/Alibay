@@ -1,5 +1,48 @@
+body {
+  background-color: #F8F5F1;
+  margin: 0;
+}
+
 .btn {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.largedetails {
+  display: flex;
+  flex-direction: column
+}
+
+.itemdetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.name {
+  margin-left: 10%;
+}
+
+.review {
+  margin-left: 5%;
+}
+
+.listofreview {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.commentBox {
+  margin-left: 3%;
+}
+
+.colorNews {
+  background-color: rgb(3, 150, 103);
 }
