@@ -87,8 +87,7 @@ class UnConnectedCart extends React.Component {
 }
 
 let mapStateToProps = state => {
-  console.log(state.items);
-  return { items: state.items };
+  return { items: state.cartItems };
 };
 
 let Cart = connect(mapStateToProps)(UnConnectedCart);

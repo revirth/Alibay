@@ -4,7 +4,7 @@ let reducer = (state, action) => {
   if (action.type === "ChangeQuantity") {
     return {
       ...state,
-      items: state.items.map(item =>
+      cartItems: state.cartItems.map(item =>
         item.itemId === parseInt(action.itemId)
           ? { ...item, itemQuantity: parseInt(action.quantity) }
           : item
@@ -13,10 +13,14 @@ let reducer = (state, action) => {
   }
 
   if (action.type === "RemoveItem") {
-    let newItems = state.items.filter( item => {
+    let newItems = state.cartItems.filter( item => {
       return item.itemId !== action.itemId
     })
-    return {...state, items: newItems}
+    return {...state, cartItems: newItems}
+  }
+
+  if(action.type === "FillCart") {
+    return {...state, cartItems: action.cartItems}
   }
 
   return state;
@@ -27,22 +31,7 @@ let reducer = (state, action) => {
 let store = createStore(
   reducer,
   {
-    items: [
-      {
-        itemId: 1,
-        itemName: "dishe1",
-        itemImage: "image1.jpg",
-        itemPrice: "10.81",
-        itemQuantity: 1
-      },
-      {
-        itemId: 2,
-        itemName: "dishe2",
-        itemImage: "image2.jpg",
-        itemPrice: "20.56",
-        itemQuantity: 1
-      }
-    ]
+    cartItems: []
   },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
