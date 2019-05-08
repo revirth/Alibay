@@ -5,6 +5,7 @@ import "./style.css";
 
 class UnConnectedCart extends React.Component {
   onChangeHandleQuantity = e => {
+    console.log(e.target.value)
     this.props.dispatch({
       type: "ChangeQuantity",
       itemId: e.target.id,
@@ -13,7 +14,7 @@ class UnConnectedCart extends React.Component {
   };
 
   onClickRemoveItem = e => {
-    this.props.dispatch({ type: "RemoveItem", itemId: parseInt(e.target.id) });
+    this.props.dispatch({ type: "RemoveItem", itemId: e.target.id });
   };
 
   render() {
@@ -29,7 +30,7 @@ class UnConnectedCart extends React.Component {
             <div className="item-cell-width">
               <div className="item-in-column">
                 <div className="image">
-                  <img src={"/" + item.itemImage} height="100px" alt="" />
+                  <img src={item.itemImage} height="150px" width= "150px" alt="" />
                 </div>
                 <div className="information-in-row">
                   <div>

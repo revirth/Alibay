@@ -209,6 +209,20 @@ app.put("/reviews/:reviewId", upload.none(), async (req, res) => {
 });
 
 app.get("/cartItems", async (req, res) => {
+  
+  let cart = await CART.find({}).toArray()
+  let items = await ITEMS.find({}).toArray()
+  let cartItems = cart.map(element => {
+    let cartItem = {}
+    items.forEach( item => {
+      if(ObjectId(item._id).toString() === element.itemId){
+        cartItem = {itemId: ObjectId(item._id).toString(), itemName: item.name, itemImage: item.imgUrl, itemPrice: item.price, itemQuantity: element.quantity }
+      }
+    })
+    return cartItem
+    })
+  console.log("cartItems",cartItems)
   process.env.NODE_ENV === "development" &&
-    res.send(await CART.find({}).toArray());
+  res.send(JSON.stringify(cartItems))
+  //  res.send(await CART.find({}).toArray());
 });
