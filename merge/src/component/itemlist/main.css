@@ -1,11 +1,5 @@
-body {
-    background-color: #bbb;
-    margin: 0;
-}
-
 .btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

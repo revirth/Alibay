@@ -1,4 +1,6 @@
 import React from "react";
+import "./reactnavbar.scss";
+
 class Links extends React.Component {
   menuToggle() {
     let menus = document.querySelector(".menus");
@@ -21,6 +23,7 @@ class Links extends React.Component {
         <a href="#">DELIVERY</a>
         <a href="#">ABOUT</a>
         <a href="#">LOGIN</a>
+        <a href="#">SIGNUP</a>
         <a href="#">
           <i className="fa fa-search fa-2x" />
         </a>
@@ -39,13 +42,13 @@ export default class Navbar extends React.Component {
           </div>
         </div>
         <div className="menus" onClick={this.menuToggle}>
-          <a href="#" onClick={this.menuToggle}>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
             WEEKLY
           </a>
-          <a href="#" onClick={this.menuToggle}>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
             FITNESS
           </a>
-          <a href="#" onClick={this.menuToggle}>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
             COOKED
           </a>
         </div>
