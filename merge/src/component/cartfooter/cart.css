@@ -1,65 +1,64 @@
+.image {
+  padding-right: 30px
+}
 
-.image{
-    padding-right: 30px
-   }
-   
-   .input-number{
-     width: 40px
-   }
-  
-   .item-in-column{
-     display: flex;
-     margin: 10px;
-     padding: 10px
-   }
-   
-  hr {
-    display: block;
-    height: 5px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 10px;
-    padding: 0;
-  }
-  
-  .information-in-row{
-    display: flex;
-    orientation: row
-  }
-  
-  .parent{
-    display: flex;
-   justify-content: center;
-  }
-  
-  .stick_bottom{
-    align-self: flex-end;
-  }
-  
-  .item-cell-width{
-    width: fit-content
-  }
-  
-  .subtotal{
-    color: red;
-    font-size: 15px;
-    text-transform: uppercase;
-    margin-left: 50px
-  }
-  
-  .total{
-    color: red;
-    font-size: 25px;
-    text-transform: uppercase;
-    margin-top: 50px
-  }
-  
-  .general-margin{
-    margin: 10px;
-  }
+.input-number {
+  width: 40px
+}
 
-  .fa-times:before {
-    content: "\f00d";
+.item-in-column {
+  display: flex;
+  margin: 10px;
+  padding: 10px
+}
+
+hr {
+  display: block;
+  height: 5px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px;
+  padding: 0;
+}
+
+.information-in-row {
+  display: flex;
+  orientation: row
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.stick_bottom {
+  align-self: flex-end;
+}
+
+.item-cell-width {
+  width: fit-content
+}
+
+.subtotal {
+  color: red;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-left: 50px
+}
+
+.total {
+  color: red;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 50px
+}
+
+.general-margin {
+  margin: 10px;
+}
+
+.fa-times:before {
+  content: "\f00d";
 }
 
 .fa {
@@ -73,7 +72,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.checkout-button{
+.checkout-button {
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 0px solid;
@@ -85,11 +84,11 @@
   text-transform: uppercase;
 }
 
-.button-right{
+.button-right {
   align-self: flex-start
 }
 
-.parent-horizontal{
-  display:flex;
+.parent-horizontal {
+  display: flex;
   justify-content: flex-end
 }
