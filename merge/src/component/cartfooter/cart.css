@@ -56,3 +56,18 @@
   .general-margin{
     margin: 10px;
   }
+
+  .fa-times:before {
+    content: "\f00d";
+}
+
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  color: red;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
