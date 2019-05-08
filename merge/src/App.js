@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import ItemsInCart from "./component/cartfooter/ItemInCart";
+import Cart from "./component/cartfooter/Cart";
 import CartBar from "./component/cartfooter/CartBar";
 import itemList from "./component/itemlist/index";
 import Navbar from "./component/navbar/reactnavbar";
@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <div>
         <Route exact={true} path="/items" component={itemList} />
-        <Route exact={true} path="/cart" component={ItemsInCart} />
+        <Route exact={true} path="/cart" component={Cart} />
       </div>
       <CartBar />
     </BrowserRouter>

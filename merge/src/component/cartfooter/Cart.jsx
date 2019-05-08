@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import './App.css'
+import './Cart.css'
 
-class UnConnectedItemsInCart extends React.Component{
+class UnConnectedCart extends React.Component{
 
     onChangeHandle = (e) => {
         this.props.dispatch({type: "ChangeQuantity", itemId: e.target.id, quantity: e.target.value})
@@ -41,6 +41,6 @@ let mapStateToProps = (state) => {
     return {items: state.items}
 }
 
-let ItemsInCart = connect(mapStateToProps)(UnConnectedItemsInCart)
+let Cart = connect(mapStateToProps)(UnConnectedCart)
 
-export default ItemsInCart
+export default Cart

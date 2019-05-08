@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import './App.css'
+import './cartBar.css'
 
 class UnconnectedCartBar extends React.Component {
 

@@ -1,6 +1,4 @@
 
-/*CartFooter*/
-
 .footer{
   position: fixed;
   left: 0;
@@ -58,64 +56,4 @@
 
 .height100{
   margin-top: 10px
-}
-
-/*Item in Cart*/
-
-.image{
-  padding-right: 30px
- }
- 
- .input-number{
-   width: 40px
- }
-
- .item-in-column{
-   display: flex;
-   margin: 10px;
-   padding: 10px
- }
- 
-hr {
-  display: block;
-  height: 5px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 10px;
-  padding: 0;
-}
-
-.information-in-row{
-  display: flex;
-  orientation: row
-}
-
-.parent{
-  display: flex;
-  justify-content: center;
-}
-
-.stick_bottom{
-  align-self: flex-end;
-}
-
-.item-cell-width{
-  width: fit-content
-}
-
-.subtotal{
-  color: red;
-  font-size: 15px;
-  text-transform: uppercase;
-  margin-left: 50px
-}
-
-.total{
-  color: red;
-  font-size: 25px;
-  text-transform: uppercase;
-}
-
-.general-margin{
-  margin: 10px;
 }
