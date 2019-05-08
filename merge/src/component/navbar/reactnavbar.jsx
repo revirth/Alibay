@@ -1,61 +1,56 @@
+<<<<<<< HEAD
 import React from "react";
 import "./reactnavbar.scss";
 
+=======
+>>>>>>> c9dc40010f7357bb84d86092f638e9d374f992d1
 class Links extends React.Component {
   menuToggle() {
-    let menus = document.querySelector(".menus");
-    if (menus.style.display === "inline-block") {
-      menus.style.display = "none";
+    let menus = document.querySelector('.menus');
+    if (menus.style.display === 'inline-block') {
+      menus.style.display = 'none';
     } else {
-      menus.style.display = "inline-block";
+      menus.style.display = 'inline-block';
     }
   }
 
   render() {
     return (
       <div>
+
         <a href="#">NUTRITION FINE FOURCHETTE</a>
-        <a href="#" onClick={this.menuToggle}>
-          MENU
-        </a>
+        <a href="#" onClick={this.menuToggle} >MENU</a>
         <a href="#">ORDER</a>
 
         <a href="#">DELIVERY</a>
         <a href="#">ABOUT</a>
         <a href="#">LOGIN</a>
-        <a href="#">
-          <i className="fa fa-search fa-2x" />
-        </a>
+        <a href="#">SIGNUP</a>
+        <a href="#"><i className="fa fa-search fa-2x"></i></a>
       </div>
     );
   }
 }
 
-export default class Navbar extends React.Component {
+
+class Navbar extends React.Component {
   render() {
     return (
       <nav>
+
         <div className="navWide">
           <div className="wideDiv">
             <Links />
           </div>
         </div>
-        <div className="menus" onClick={this.menuToggle}>
-          <a href="#" onClick={this.menuToggle}>
-            WEEKLY
-          </a>
-          <a href="#" onClick={this.menuToggle}>
-            FITNESS
-          </a>
-          <a href="#" onClick={this.menuToggle}>
-            COOKED
-          </a>
+        <div className="menus"
+          onClick={this.menuToggle}>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>WEEKLY</a>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>FITNESS</a>
+          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>COOKED</a>
         </div>
         <div className="navNarrow" onClick={this.toggle}>
-          <span>
-            {" "}
-            <i className="fas fa-hamburger fa-2x" />
-          </span>
+          <span> <i className="fas fa-hamburger fa-2x"></i></span>
 
           <i className="fa fa-bars fa-2x" />
           <div className="narrowLinks hidden">
@@ -71,13 +66,16 @@ export default class Navbar extends React.Component {
     narrowLinks.classList.toggle("hidden");
   }
   menuToggle() {
-    let menus = document.querySelector(".menus");
-    if (menus.style.display === "inline-block") {
-      menus.style.display = "none";
+    let menus = document.querySelector('.menus');
+    if (menus.style.display === 'inline-block') {
+      menus.style.display = 'none';
     } else {
-      menus.style.display = "inline-block";
+      menus.style.display = 'inline-block';
     }
   }
+
+
+
 }
 
 // ReactDOM.render(<Navbar />, document.getElementById("root"));

@@ -1,11 +1,24 @@
 /* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> */
 /* <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> */
 
+<<<<<<< HEAD
 nav {
   background-color: #e32b2b;
   overflow: hidden;
   padding: 1em;
   border-bottom: 3px solid transparent;
+=======
+  
+body{
+  background-color:#F8F5F1;
+}
+  
+nav {
+	background-color: #037B55;
+	overflow: hidden;
+	padding: 1em;
+	border-bottom: 3px solid transparent;
+>>>>>>> c9dc40010f7357bb84d86092f638e9d374f992d1
 }
 
 nav a {
@@ -28,9 +41,14 @@ nav .navWide .wideDiv a {
   padding-bottom: 5px;
 }
 
+<<<<<<< HEAD
 a {
   transition: 1000ms;
   border-bottom: 1px solid #e32b2b;
+=======
+a {transition:1000ms;
+    border-bottom:1px solid transparent ;
+>>>>>>> c9dc40010f7357bb84d86092f638e9d374f992d1
 }
 a:hover {
   border-color: white;
@@ -60,19 +78,27 @@ nav .navNarrow .narrowLinks a {
 
 /*Adjust breakpoint as desired to select when the "hamburger" menu is
 replaced by just the links.*/
+<<<<<<< HEAD
 @media (min-width: 1100px) {
   nav .navWide {
     display: block;
   }
+=======
+@media (min-width: 1300px) {
+	
+	nav .navWide {
+		display: block;
+	}
+>>>>>>> c9dc40010f7357bb84d86092f638e9d374f992d1
 
   nav .navNarrow {
     display: none;
   }
 }
 
-/* .float-right{
+.float-right{
   
-} */
+}
 
 .menus {
   display: none;
@@ -86,6 +112,17 @@ replaced by just the links.*/
   clear: left;
   padding: 0.5em 0;
 }
+<<<<<<< HEAD
 .menus a:hover {
   border-color: white;
+=======
+.menus a{
+	text-decoration: none;
+	transition:1000ms;
+	border-bottom:1px solid tranparent ;
+	 display: block;
+		 float: left;
+		clear: left;
+		padding: 0.5em 0; 
+>>>>>>> c9dc40010f7357bb84d86092f638e9d374f992d1
 }
