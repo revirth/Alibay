@@ -22,7 +22,7 @@ class UnConnectedCart extends React.Component{
         {this.props.items.map( item => {
             return (<div className="item-cell-width">
                 <div className="item-in-column">
-                <div className="image"><img src={item.itemImage} height = "100px" alt=""></img></div>
+                <div className="image"><img src={"/"+item.itemImage} height = "100px" alt=""></img></div>
                 <div className="information-in-row">
                     <div>
                     <div>Name: {item.itemName}</div>
@@ -32,12 +32,15 @@ class UnConnectedCart extends React.Component{
                     <div className="parent"><div className="stick_bottom">Qt: <input className="input-number" type="number" value={item.itemQuantity} id={item.itemId} onChange={this.onChangeHandleQuantity}></input></div></div>
                 </div>
                 <div className="parent"><div className="stick_bottom subtotal">Subtotal: {(parseFloat(item.itemPrice)*item.itemQuantity).toFixed(2)}</div></div>
-                <i className="fa fa-times" id={item.itemId} onClick={this.onClickRemoveItem}></i>
+                <div><i className="fa fa-times" id={item.itemId} onClick={this.onClickRemoveItem}></i></div>
                 </div>
                 <hr></hr>
             </div>)
         })}
     <div className="total">Total: {total.toFixed(2)}</div>
+    <div className="parent-horizontal">
+    <div classname="button-right"><button className="checkout-button" onClick={this.onClickHandle}>Checkout</button></div>
+    </div>
     </div>)
         }
 }

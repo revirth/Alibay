@@ -5,10 +5,6 @@ import './cartBar.css'
 
 class UnconnectedCartBar extends React.Component {
 
-    onClickHandle = () => {
-      
-    }
-
     render(){
         return(
             <div className="footer row">
@@ -22,7 +18,7 @@ class UnconnectedCartBar extends React.Component {
                         </div>
                 </div>
                 <div className="column equal-width"><div className="column text-title">Total: </div><div className="column number">${this.props.total.toFixed(2)}</div></div>
-                <div className="column equal-width"><Link to="/cart/"><button className="button" onClick={this.onClickHandle}>View Cart</button></Link></div>
+                <div className="column equal-width"><Link to="/cart/"><button className="view-cart-button" onClick={this.onClickHandle}>View Cart</button></Link></div>
                 <div className="equal-width"></div>
             </div>)
     }
