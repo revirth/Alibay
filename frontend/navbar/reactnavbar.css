@@ -1,62 +1,77 @@
+
+  
 nav {
 	background-color: #E32B2B;
-overflow: hidden;
-padding: 1em;
-}
-nav a {
-	color: #FFF;
+	overflow: hidden;
+	padding: 1em;
+	border-bottom: 3px solid transparent;
 }
 
-.navWide{
-	diplay:none;
-	margin:0 auto;
+nav	a {
+		color: white;
 }
-.navWide .wideDiv {
+
+nav .navWide {
+	display: none;
+	margin: 0 auto;
+}
+
+nav .navWide .wideDiv {
 	text-align: center;
 }
-.navWide .wideDiv .leftnav{
-	text-align: left;
-}
 
-.navWide .wideDiv a{
+nav .navWide .wideDiv a {
 	text-decoration: none;
-	transition:1000ms;
-	border-bottom:1px solid #E32B2B ;
-	display: inline-block;
-	padding: 0 1.5em;
-	padding-bottom:5px;
+	display: line-block;
+	padding: 0 2.5em;
+  padding-bottom:5px;
+    
 }
 
-.navWide .wideDiv a:hover{
-	border-color:white;
+a {transition:1000ms;
+    border-bottom:1px solid #E32B2B ;
 }
-
-.navNarrow p{
-	float:left;
-	color:#FFF;
+a:hover{
+  border-color:white;
 }
-.navNarrow p i{
+nav .navNarrow span {
+  float: left;
+	cursor: pointer;
+	color: white;
+}	
+nav	.navNarrow i {
 	float: right;
-cursor: pointer;
-color: #FFF;
+	cursor: pointer;
+	color: white;
 }
 
-.navNarrow .narrowLinks{
-	display:none;
-}
-
-.navNarrow .narrwoLinks a{
+nav .navNarrow .narrowLinks a {
 	text-decoration: none;
-			transition:1000ms;
-			border-bottom:1px solid #E32B2B ;
-display: block;
-float: left;
-clear: left;
-padding: 0.5em 0;
+	display: block;
+	float: left;
+	clear: left;
+	padding: 1em 0;
 }
 
-.navNarrow .narrowLinks a:hover{
-	border-color:white;
+.hidden {
+  display: none;
+}
+
+/*Adjust breakpoint as desired to select when the "hamburger" menu is
+replaced by just the links.*/
+@media (min-width: 1100px) {
+	
+	nav .navWide {
+		display: block;
+	}
+
+	nav .navNarrow {
+		display: none;
+	}
+}
+
+.float-right{
+  
 }
 
 .menus{
@@ -73,17 +88,4 @@ padding: 0.5em 0;
 }
 .menus a:hover{
 	border-color:white;
-}
-
-
-@media (min-width:1023px){
-	nav .navWide{
-			display: block;
-	}
-
-}
-@media (min-width:1023px){
-	nav .navNarrow{
-			display:none;
-	}
 }
