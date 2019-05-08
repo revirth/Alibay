@@ -24,8 +24,8 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <HomePageContent />
       <div>
+        <Route exact={true} path="/" component={HomePageContent} />
         <Route exact={true} path="/items" component={itemList} />
         <Route exact={true} path="/cart" component={Cart} />
         <Route exact={true} path="/items/:itemId" render={renderItem} />

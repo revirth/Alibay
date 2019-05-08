@@ -13,7 +13,7 @@ class Links extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="navbarmains">
         <a href="#">NUTRITION FINE FOURCHETTE</a>
         <a href="#" onClick={this.menuToggle}>
           MENU
