@@ -1,8 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import './cartBar.css'
 
 class UnconnectedCartBar extends React.Component {
+
+    onClickHandle = () => {
+      
+    }
 
     render(){
         return(
@@ -17,7 +22,7 @@ class UnconnectedCartBar extends React.Component {
                         </div>
                 </div>
                 <div className="column equal-width"><div className="column text-title">Total: </div><div className="column number">${this.props.total.toFixed(2)}</div></div>
-                <div className="column equal-width"><button className="button" onClick={this.handleOnClick}>View Cart</button></div>
+                <div className="column equal-width"><Link to="/cart/"><button className="button" onClick={this.onClickHandle}>View Cart</button></Link></div>
                 <div className="equal-width"></div>
             </div>)
     }
