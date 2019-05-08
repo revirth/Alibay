@@ -1,4 +1,6 @@
 import React from "react";
+import "./reactnavbar.scss";
+
 class Links extends React.Component {
   menuToggle() {
     let menus = document.querySelector(".menus");
