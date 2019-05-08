@@ -11,8 +11,18 @@ let reducer = (state, action) => {
       )
     };
   }
+
+  if (action.type === "RemoveItem") {
+    let newItems = state.items.filter( item => {
+      return item.itemId !== action.itemId
+    })
+    return {...state, items: newItems}
+  }
+
   return state;
-};
+}
+
+
 
 let store = createStore(
   reducer,
@@ -23,14 +33,14 @@ let store = createStore(
         itemName: "dishe1",
         itemImage: "image1.jpg",
         itemPrice: "10.81",
-        itemQuantity: 0
+        itemQuantity: 1
       },
       {
         itemId: 2,
         itemName: "dishe2",
         itemImage: "image2.jpg",
         itemPrice: "20.56",
-        itemQuantity: 0
+        itemQuantity: 1
       }
     ]
   },

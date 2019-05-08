@@ -4,8 +4,12 @@ import './cart.css'
 
 class UnConnectedCart extends React.Component{
 
-    onChangeHandle = (e) => {
+    onChangeHandleQuantity = (e) => {
         this.props.dispatch({type: "ChangeQuantity", itemId: e.target.id, quantity: e.target.value})
+    }
+
+    onClickRemoveItem = (e) => {
+        this.props.dispatch({type: "RemoveItem", itemId: parseInt(e.target.id)})
     }
 
     render(){
@@ -23,11 +27,12 @@ class UnConnectedCart extends React.Component{
                     <div>
                     <div>Name: {item.itemName}</div>
                     <hr></hr>
-                    <div class="stick_bottom">${item.itemPrice}</div>
+                    <div className="stick_bottom">${item.itemPrice}</div>
                     </div>
-                    <div class="parent"><div className="stick_bottom">Qt: <input className="input-number" type="number" id={item.itemId} onChange={this.onChangeHandle}></input></div></div>
+                    <div className="parent"><div className="stick_bottom">Qt: <input className="input-number" type="number" value={item.itemQuantity} id={item.itemId} onChange={this.onChangeHandleQuantity}></input></div></div>
                 </div>
-                <div class="parent"><div className="stick_bottom subtotal">Subtotal: {(parseFloat(item.itemPrice)*item.itemQuantity).toFixed(2)}</div></div>
+                <div className="parent"><div className="stick_bottom subtotal">Subtotal: {(parseFloat(item.itemPrice)*item.itemQuantity).toFixed(2)}</div></div>
+                <i className="fa fa-times" id={item.itemId} onClick={this.onClickRemoveItem}></i>
                 </div>
                 <hr></hr>
             </div>)
@@ -38,6 +43,7 @@ class UnConnectedCart extends React.Component{
 }
 
 let mapStateToProps = (state) => {
+    console.log(state.items)
     return {items: state.items}
 }
 
