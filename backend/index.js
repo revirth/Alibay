@@ -30,19 +30,15 @@ MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
     CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
     ITEMS = DB.collection("items");
     REVIEWS = DB.collection("reviews");
-    CART = DB.collection("cart")
+    CART = DB.collection("cart");
 
     // in dev environment, check MongoDB documents
-    let p1 = USERS.find({}).toArray();
-    let p2 = CONFIG.find({}).toArray();
-    let p3 = ITEMS.find({}).toArray();
-    let p4 = REVIEWS.find({}).toArray();
-    let p5 = CART.find({}).toArray()
+    let arrP = [USERS, CONFIG, ITEMS, REVIEWS, CART].map(p =>
+      p.find({}).toArray()
+    );
 
     process.env.NODE_ENV === "development" &&
-      Promise.all([p1, p2, p3, p4,p5]).then(arr =>
-        arr.map(res => console.log(res))
-      );
+      Promise.all(arrP).then(arr => arr.map(res => console.log(res)));
 
     // start express server
     app.listen(4000, () => console.log("listening on port 4000"));
