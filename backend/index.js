@@ -94,8 +94,9 @@ app.post("/signup", upload.none(), async (req, res) => {
   }
 
   // store userinfo in Mongo
-  let query = { ...req.body, password: sha256(req.body.password), usertype: 1 };
-  await USERS.insertOne(query);
+  let obj = { ...req.body, password: sha256(req.body.password), usertype: 1 };
+
+  await USERS.insertOne(obj);
   res.send(resmsg(true, "signup success"));
 });
 
@@ -130,13 +131,14 @@ app.get("/items/:itemId/reviews", upload.none(), async (req, res) => {
 app.post("/items", upload.none(), async (req, res) => {
   console.log("TCL: /items", req.body);
 
-  let object = {
+  // store an item in Mongo
+  let obj = {
     ...req.body,
     price: parseFloat(req.body.price),
     quantity: parseInt(req.body.quantity)
   };
 
-  await ITEMS.insertOne(object);
+  await ITEMS.insertOne(obj);
   res.send(resmsg(true, "item inserted"));
 });
 
@@ -180,12 +182,10 @@ app.get("/reviews/:reviewId", upload.none(), async (req, res) => {
 app.post("/reviews", upload.none(), async (req, res) => {
   console.log("TCL: /reviews", req.body);
 
-  let object = {
-    ...req.body,
-    rating: parseInt(req.body.rating)
-  };
+  // store a review in Mongo
+  let obj = { ...req.body, rating: parseInt(req.body.rating) };
 
-  await REVIEWS.insertOne(object);
+  await REVIEWS.insertOne(obj);
   res.send(resmsg(true, "review inserted"));
 });
 
