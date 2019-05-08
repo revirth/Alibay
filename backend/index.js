@@ -6,6 +6,9 @@ app.use("/images", express.static("uploads"));
 let cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+let cors = require("cors");
+app.use(cors({ credentials: true, origin: `http://localhost:3000` }));
+
 let shajs = require("sha.js");
 sha256 = str =>
   shajs("sha256")
@@ -102,6 +105,8 @@ app.get("/items", upload.none(), async (req, res) => {
   console.log("TCL: /items", req.body);
 
   let docs = await ITEMS.find({}).toArray();
+
+  console.log("TCL: /items", docs);
 
   res.send(docs);
 });

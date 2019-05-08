@@ -1,13 +1,13 @@
 import React from "react";
 
-const Product = ({ id, name, description, img, price, addFunc }) => {
+const Product = ({ id, name, description, imgUrl, price, addFunc }) => {
   return (
     <article
       className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center"
       id={id}
     >
       <img
-        src={img}
+        src={imgUrl}
         className="db w-100 br2 br--top"
         alt="Photo of a kitten looking menacing."
         title={name}
