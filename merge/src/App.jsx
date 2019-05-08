@@ -7,6 +7,7 @@ import CartBar from "./component/cartfooter/CartBar";
 import itemList from "./component/itemlist/index";
 import Navbar from "./component/navbar/reactnavbar";
 import Itempage from "./component/itemlist/itempage.jsx";
+import HomePageContent from "./component/homepagecontent/HomePageContent.jsx"
 
 let renderItem = routerData => {
   // 10
@@ -23,6 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <HomePageContent />
       <div>
         <Route exact={true} path="/items" component={itemList} />
         <Route exact={true} path="/cart" component={Cart} />
