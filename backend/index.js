@@ -30,15 +30,17 @@ MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
     CONFIG = DB.collection("config"); // usertypes: [type1, type2, type3 ...],
     ITEMS = DB.collection("items");
     REVIEWS = DB.collection("reviews");
+    CART = DB.collection("cart")
 
     // in dev environment, check MongoDB documents
     let p1 = USERS.find({}).toArray();
     let p2 = CONFIG.find({}).toArray();
     let p3 = ITEMS.find({}).toArray();
     let p4 = REVIEWS.find({}).toArray();
+    let p5 = CART.find({}).toArray()
 
     process.env.NODE_ENV === "development" &&
-      Promise.all([p1, p2, p3, p4]).then(arr =>
+      Promise.all([p1, p2, p3, p4,p5]).then(arr =>
         arr.map(res => console.log(res))
       );
 
@@ -208,4 +210,9 @@ app.put("/reviews/:reviewId", upload.none(), async (req, res) => {
   console.log(doc);
 
   doc["ok"] && res.send(resmsg(true, "review updated"));
+});
+
+app.get("/cartItems", async (req, res) => {
+  process.env.NODE_ENV === "development" &&
+    res.send(await CART.find({}).toArray());
 });
