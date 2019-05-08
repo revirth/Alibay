@@ -1,4 +1,13 @@
 class Links extends React.Component {
+	menuToggle() {
+		let menus = document.querySelector('.menus');
+		if (menus.style.display === 'inline-block') {
+			menus.style.display = 'none';
+		} else {
+			menus.style.display = 'inline-block';
+		}
+	}
+
 	render() {
 		return (
 			<div>
@@ -15,6 +24,7 @@ class Links extends React.Component {
 		);
 	}
 }
+
 
 class Navbar extends React.Component {
 	render() {
@@ -48,9 +58,13 @@ class Navbar extends React.Component {
 		let narrowLinks = document.querySelector(".narrowLinks");
 		narrowLinks.classList.toggle("hidden");
 	}
-	toggleMenu() {
-		let menu = document.querySelector(".menus")
-		menu.style.display = "inline-block"
+	menuToggle() {
+		let menus = document.querySelector('.menus');
+		if (menus.style.display === 'inline-block') {
+			menus.style.display = 'none';
+		} else {
+			menus.style.display = 'inline-block';
+		}
 	}
 
 
