@@ -27,7 +27,9 @@ const Product = ({ _id, name, description, imgUrl, price, addFunc }) => {
             <h2 className="f5 mv0">{price}</h2>
           </div>
         </div>
-        <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
+        <p className="f6 lh-copy measure mt2 mid-gray">
+          {description.substring(0, 200)}
+        </p>
         <div className="btn1">
           <button
             className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow btncart"
