@@ -102,6 +102,7 @@ class Itempage extends Component {
                 </fieldset>
               </form>
             </div>
+            <div className="footergap" />
           </div>
         </div>
       </div>
