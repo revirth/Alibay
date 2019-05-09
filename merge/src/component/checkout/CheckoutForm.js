@@ -5,7 +5,7 @@ import {
   CardElement,
   injectStripe
 } from "react-stripe-elements";
-import "./stripe.css"
+//import "./stripe.css"
 
 class CheckoutForm extends Component {
   constructor(props) {
