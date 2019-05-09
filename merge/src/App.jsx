@@ -11,15 +11,15 @@ import HomePageContent from "./component/homepagecontent/HomePageContent.jsx";
 import Login from "./component/login/index";
 
 let renderItem = routerData => {
-  // 10
 
-  // 11
+
+
   return (
     <div>
       <Itempage id={routerData.match.params.itemId} />
     </div>
-  ); // 11
-}; // 11
+  );
+};
 
 function App() {
   return (

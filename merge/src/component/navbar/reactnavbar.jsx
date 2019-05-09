@@ -14,16 +14,16 @@ class Links extends React.Component {
   render() {
     return (
       <div className="navbarmains">
-        <a href="#">NUTRITION FINE FOURCHETTE</a>
+        <a href="/" className="titles">Nutrition Fine Fourchette</a>
         <a href="#" onClick={this.menuToggle}>
           MENU
         </a>
-        <a href="#">ORDER</a>
+        <a href="/cart">ORDER</a>
 
         <a href="#">DELIVERY</a>
-        <a href="#">ABOUT</a>
-        <a href="#">LOGIN</a>
-        <a href="#">SIGNUP</a>
+        <a href="/">ABOUT</a>
+        <a href="/login">LOGIN</a>
+        <a href="/signup">SIGNUP</a>
         <a href="#">
           <i id="searchbutton" className="fa fa-search fa-2x" />
         </a>
@@ -35,20 +35,20 @@ class Links extends React.Component {
 export default class Navbar extends React.Component {
   render() {
     return (
-      <nav>
+      <nav className="fixednav">
         <div className="navWide">
           <div className="wideDiv">
             <Links />
           </div>
         </div>
         <div className="menus" onClick={this.menuToggle}>
-          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
+          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
             WEEKLY
           </a>
-          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
+          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
             FITNESS
           </a>
-          <a href="#" onClick={this.menuToggle} onClick={this.toggle}>
+          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
             COOKED
           </a>
         </div>

@@ -1,19 +1,19 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css");
 @import url("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
-
-
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
 #searchbutton{
   color:white;
 }
 nav {
   background-color: #037B55;
   overflow: hidden;
-  padding: 1em;
+  padding: 1.30em;
   border-bottom: 3px solid transparent;
 }
 
 nav a {
   color: white;
+  font-family: 'Slabo 27px', serif;
 }
 
 nav .navWide {
@@ -64,7 +64,7 @@ nav .navNarrow .narrowLinks a {
 
 /*Adjust breakpoint as desired to select when the "hamburger" menu is
 replaced by just the links.*/
-@media (min-width: 1100px) {
+@media (min-width: 1250px) {
   nav .navWide {
     display: block;
   }
@@ -92,4 +92,7 @@ replaced by just the links.*/
 }
 .menus a:hover {
   border-color: white;
+}
+.titles{
+  font-size: 1.25em;
 }

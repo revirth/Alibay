@@ -18,7 +18,8 @@ body{
    }
    
    /* scocial medias */
-   .socialmedias{
+
+  .socialmedias{
     
      margin-top:200px;
      margin-bottom:200px;
@@ -29,6 +30,8 @@ body{
       display:flex;
       justify-content:space-around;
    }
+   
+
    /* style for text blockof3 */
    
    #blockof3{
@@ -81,18 +84,62 @@ body{
    
    
    }
-   
-   i{
-      color:#037B55;
+
+//    <div className="socialmedias">
+//    <i className="facebooks" className="fab fa-facebook-square"></i>
+//    <i className="twitters" className="fab fa-twitter-square"></i>
+//    <i className="instagrams" className="fab fa-instagram"></i>
+// </div>
+
+
+   .socialmedias{
+   i.fa-facebook-square{
+     
       font-size: 5em;
       transition:1s;
       padding-left:20%;
+
+       
+         color:#3B5A98;
+      
+     
+   }
+   i.fa-twitter-square{
+     
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+
+       
+         color:#1EA1F2;
+      
+     
+   }
+   i.fa-instagram{
+     
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+
+       
+         color:#EA0B57;
+      
+     
    }
    
    i:hover{
       font-size: 6em;
    
    }
+
+}
+//  #facebooks
+//    #3B5A98
+
+// #instagrams
+// #EA0B57
+   // #twitters
+   // #1EA1F2
    
    .box1 p{
    padding-top:10px;
@@ -134,3 +181,23 @@ body{
      padding:100px;
    }
 }
+
+.services{
+   i{
+      color:#037B55;
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+   }
+   
+   i:hover{
+      font-size: 6em;
+   
+   }
+}
+
+
+ 
+ 
+ 
+ 
