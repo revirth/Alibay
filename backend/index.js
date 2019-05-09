@@ -1,21 +1,29 @@
 let express = require("express");
 let app = express();
-let upload = require("multer")({ dest: __dirname + "/uploads/" });
+let upload = require("multer")({
+  dest: __dirname + "/uploads/"
+});
 app.use("/images", express.static("uploads"));
 
 let cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
 let cors = require("cors");
-app.use(cors({ credentials: true, origin: `http://localhost:3000` }));
+app.use(cors({
+  credentials: true,
+  origin: `http://localhost:3000`
+}));
 
 let shajs = require("sha.js");
 sha256 = str =>
   shajs("sha256")
-    .update(str)
-    .digest("hex");
+  .update(str)
+  .digest("hex");
 
-resmsg = (st, msg) => ({ status: st, message: msg });
+resmsg = (st, msg) => ({
+  status: st,
+  message: msg
+});
 
 let SESSIONS = {};
 
@@ -23,7 +31,9 @@ require("dotenv-expand")(require("dotenv").config());
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectId;
 let DB, USERS, CONFIG, ITEMS, REVIEWS;
-MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
+MongoClient.connect(process.env.MLAB_URI, {
+  useNewUrlParser: true
+}).then(
   client => {
     DB = client.db("alibay");
     USERS = DB.collection("users"); // [{username:'a', password:'sha256...', usertype:1}]
@@ -53,7 +63,10 @@ app.get("/users", async (req, res) => {
 app.post("/login", upload.none(), async (req, res) => {
   console.log("TCL: /login", req.body);
 
-  let query = { ...req.body, password: sha256(req.body.password) };
+  let query = {
+    ...req.body,
+    password: sha256(req.body.password)
+  };
 
   // find a user in Mongo
   let doc = await USERS.findOne(query);
@@ -82,10 +95,12 @@ app.get("/logout", upload.none(), (req, res) => {
 });
 
 app.post("/signup", upload.none(), async (req, res) => {
-  console.log("TCL: /signup", req.body);
+
 
   // check the username
-  let doc = await USERS.findOne({ username: req.body.username });
+  let doc = await USERS.findOne({
+    username: req.body.username
+  });
   console.log("TCL: /signup -> USERS.findOne", doc);
 
   if (doc !== null) {
@@ -94,7 +109,11 @@ app.post("/signup", upload.none(), async (req, res) => {
   }
 
   // store userinfo in Mongo
-  let obj = { ...req.body, password: sha256(req.body.password), usertype: 1 };
+  let obj = {
+    ...req.body,
+    password: sha256(req.body.password),
+    usertype: 1
+  };
 
   await USERS.insertOne(obj);
   res.send(resmsg(true, "signup success"));
@@ -103,11 +122,12 @@ app.post("/signup", upload.none(), async (req, res) => {
 app.get("/items", upload.none(), async (req, res) => {
   console.log("TCL: /items", req.query);
 
-  const query = req.query.search
-    ? {
-        name: { $regex: req.query.search, $options: "i" }
-      }
-    : {};
+  const query = req.query.search ? {
+    name: {
+      $regex: req.query.search,
+      $options: "i"
+    }
+  } : {};
 
   let docs = await ITEMS.find(query).toArray();
 
@@ -128,7 +148,9 @@ app.get("/items/:itemId", upload.none(), async (req, res) => {
 app.get("/items/:itemId/reviews", upload.none(), async (req, res) => {
   console.log("TCL: /items/:itemId/reviews", req.params);
 
-  let query = { itemId: req.params.itemId };
+  let query = {
+    itemId: req.params.itemId
+  };
   let docs = await REVIEWS.find(query).toArray();
 
   res.send(docs);
@@ -157,11 +179,13 @@ app.put("/items/:itemId", upload.none(), async (req, res) => {
     quantity: parseInt(req.body.quantity)
   };
 
-  let doc = await ITEMS.findOneAndUpdate(
-    { _id: ObjectId(req.params.itemId) },
-    { $set: object },
-    { returnNewDocument: true }
-  );
+  let doc = await ITEMS.findOneAndUpdate({
+    _id: ObjectId(req.params.itemId)
+  }, {
+    $set: object
+  }, {
+    returnNewDocument: true
+  });
 
   console.log(doc);
 
@@ -189,7 +213,10 @@ app.post("/reviews", upload.none(), async (req, res) => {
   console.log("TCL: /reviews", req.body);
 
   // store a review in Mongo
-  let obj = { ...req.body, rating: parseInt(req.body.rating) };
+  let obj = {
+    ...req.body,
+    rating: parseInt(req.body.rating)
+  };
 
   await REVIEWS.insertOne(obj);
   res.send(resmsg(true, "review inserted"));
@@ -203,11 +230,13 @@ app.put("/reviews/:reviewId", upload.none(), async (req, res) => {
     rating: parseInt(req.body.rating)
   };
 
-  let doc = await REVIEWS.findOneAndUpdate(
-    { _id: ObjectId(req.params.reviewId) },
-    { $set: object },
-    { returnNewDocument: true }
-  );
+  let doc = await REVIEWS.findOneAndUpdate({
+    _id: ObjectId(req.params.reviewId)
+  }, {
+    $set: object
+  }, {
+    returnNewDocument: true
+  });
 
   console.log(doc);
 
@@ -243,7 +272,9 @@ app.post("/charge", upload.none(), async (req, res) => {
   console.log("TCL: /charge", req.body);
 
   try {
-    let { status } = await stripe.charges.create({
+    let {
+      status
+    } = await stripe.charges.create({
       amount: 2000,
       currency: "usd",
       description: "An example charge",
@@ -251,7 +282,9 @@ app.post("/charge", upload.none(), async (req, res) => {
     });
 
     console.log("TCL: /charge -> ", status);
-    res.json({ status });
+    res.json({
+      status
+    });
   } catch (err) {
     console.error("TCL: /charge -> ", err);
 

@@ -7,10 +7,42 @@ export default class LoginPopup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signup: false
+      signup: false,
+      username: "",
+      password: ""
     };
   }
 
+  handleUsername = event => {
+    this.setState({ username: event.target.value });
+  };
+
+  handlePassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    let data = new FormData();
+    data.append("username", this.state.username);
+    data.append("password", this.state.password);
+    fetch("http://localhost:4000/login", {
+      method: "POST",
+      body: data,
+      credentials: "include"
+    })
+      .then(x => {
+        return x.json();
+      })
+      .then(res => {
+        if (!res.status) {
+          alert("Incorrect Username or Password");
+          return;
+        } else {
+          this.props.onClose();
+        }
+      });
+  };
   render() {
     return (
       <div className="overlay ">
@@ -46,9 +78,6 @@ export default class LoginPopup extends Component {
               </span>
             </form>
             <div className="btndiv">
-              {/* <button className="btn signup f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow">
-                Don't have account? Create a new one!
-              </button> */}
               <button
                 className="btn login-btn f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow"
                 onClick={this.props.onClose}
