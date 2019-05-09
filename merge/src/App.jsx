@@ -9,11 +9,9 @@ import Navbar from "./component/navbar/reactnavbar";
 import Itempage from "./component/itemlist/itempage.jsx";
 import HomePageContent from "./component/homepagecontent/HomePageContent.jsx";
 import Login from "./component/login/index";
+import Checkout from "./component/checkout/index";
 
 let renderItem = routerData => {
-
-
-
   return (
     <div>
       <Itempage id={routerData.match.params.itemId} />
@@ -31,6 +29,7 @@ function App() {
         <Route exact={true} path="/items" component={itemList} />
         <Route exact={true} path="/cart" component={Cart} />
         <Route exact={true} path="/items/:itemId" render={renderItem} />
+        <Route exact={true} path="/checkout" component={Checkout} />
       </div>
       <CartBar />
     </BrowserRouter>

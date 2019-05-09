@@ -37,8 +37,8 @@ MongoClient.connect(process.env.MLAB_URI, { useNewUrlParser: true }).then(
       p.find({}).toArray()
     );
 
-    process.env.NODE_ENV === "development" &&
-      Promise.all(arrP).then(arr => arr.map(res => console.log(res)));
+    // process.env.NODE_ENV === "development" &&
+    //   Promise.all(arrP).then(arr => arr.map(res => console.log(res)));
 
     // start express server
     app.listen(4000, () => console.log("listening on port 4000"));
@@ -235,4 +235,34 @@ app.get("/cartItems", async (req, res) => {
   console.log("cartItems", cartItems);
   process.env.NODE_ENV === "development" && res.send(JSON.stringify(cartItems));
   //  res.send(await CART.find({}).toArray());
+});
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+app.use(require("body-parser").text());
+app.post("/charge", upload.none(), async (req, res) => {
+  console.log("TCL: /charge", req.body);
+
+  try {
+    let { status } = await stripe.charges.create({
+      amount: 2000,
+      currency: "usd",
+      description: "An example charge",
+      source: req.body
+    });
+
+    console.log("TCL: /charge -> ", status);
+    res.json({ status });
+  } catch (err) {
+    console.error("TCL: /charge -> ", err);
+
+    res.status(500).end();
+  }
+});
+
+app.get("/charges", async (req, res) => {
+  console.log("TCL: /charges");
+
+  let list = await stripe.charges.list();
+
+  res.json(list);
 });
