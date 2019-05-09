@@ -1,5 +1,6 @@
 import React from "react";
 import "./reactnavbar.scss";
+import Fade from 'react-reveal/Fade';
 
 class Links extends React.Component {
   menuToggle() {
@@ -40,17 +41,19 @@ export default class Navbar extends React.Component {
             <Links />
           </div>
         </div>
-        <div className="menus" onClick={this.menuToggle}>
-          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
-            WEEKLY
+        <Fade top>
+          <div className="menus" onClick={this.menuToggle}>
+            <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
+              WEEKLY
           </a>
-          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
-            FITNESS
+            <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
+              FITNESS
           </a>
-          <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
-            COOKED
+            <a href="/items" onClick={this.menuToggle} onClick={this.toggle}>
+              COOKED
           </a>
-        </div>
+          </div>
+        </Fade>
         <div className="navNarrow" onClick={this.toggle}>
           <span>
             {" "}
