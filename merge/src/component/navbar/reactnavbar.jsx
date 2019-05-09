@@ -23,7 +23,7 @@ class Links extends React.Component {
         <a href="#">DELIVERY</a>
         <a href="/">ABOUT</a>
         <a href="/login">LOGIN</a>
-        <a href="/signup">SIGNUP</a>
+        <a href="/login">SIGNUP</a>
         <a href="#">
           <i id="searchbutton" className="fa fa-search fa-2x" />
         </a>
