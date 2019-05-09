@@ -6,7 +6,7 @@ class HomePageContent extends React.Component {
         return (
             <div className="homecontent">
 
-                <div className="videocontainer" data-jsx="2165040243" data-reactid="73"><div className="vsc-controller" data-vscid="4rvi0manm"></div><video src="//cms.chobanifoodservice.com/assets/Chobani_Loop_7.mp4" autoplay="" muted="" loop="" playsinline="" className="video" data-jsx="2165040243" data-reactid="74" data-vscid="4rvi0manm" width="1280" height="780"></video></div>
+                <div className="videocontainer" data-jsx="2165040243" data-reactid="73"><div className="vsc-controller" data-vscid="4rvi0manm"></div><video src="//cms.chobanifoodservice.com/assets/Chobani_Loop_7.mp4" autoPlay className="muted" loop playsinline="" className="video" data-jsx="2165040243" data-reactid="74" data-vscid="4rvi0manm" width="1280" height="780"></video></div>
                 <div className="row align-items-center" id="blockof3">
                     <div className="col-md-4 hello">
                         <p> <span className="redish">DELIVERY</span>
@@ -81,6 +81,7 @@ class HomePageContent extends React.Component {
 
                     </div>
                 </div>
+
                 <div className="spaceforfooter"></div>
 
 
