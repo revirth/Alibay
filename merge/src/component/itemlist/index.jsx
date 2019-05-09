@@ -4,7 +4,6 @@ import "./style.css";
 import React, { Component } from "react";
 import Product from "./product.jsx";
 import { item } from "./items.js";
-import StripeCheckout from "react-stripe-checkout";
 
 export default class App extends Component {
   constructor(props) {
@@ -43,11 +42,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <StripeCheckout
-          token={this.onToken}
-          stripeKey="pk_test_CRKICC1dKUDItn2acglHknjy00vt3Eu2o5
-          "
-        />
         <main className="pa3 pa5-ns flex flex-wrap">
           {this.state.items.map(p => (
             <Product key={p.id} {...p} addFunc={this.handleAddFunc} />
