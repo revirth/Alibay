@@ -8,7 +8,6 @@ import itemList from "./component/itemlist/index";
 import Navbar from "./component/navbar/reactnavbar";
 import Itempage from "./component/itemlist/itempage.jsx";
 import HomePageContent from "./component/homepagecontent/HomePageContent.jsx";
-import Login from "./component/login/index";
 import Checkout from "./component/checkout/index";
 
 let renderItem = routerData => {
@@ -22,10 +21,9 @@ let renderItem = routerData => {
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar /> {/* TODO: pass state.login  */}
       <div>
         <Route exact={true} path="/" component={HomePageContent} />
-        <Route exact={true} path="/login" component={Login} />
         <Route exact={true} path="/items" component={itemList} />
         <Route exact={true} path="/cart" component={Cart} />
         <Route exact={true} path="/items/:itemId" render={renderItem} />

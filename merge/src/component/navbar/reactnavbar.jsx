@@ -54,10 +54,10 @@ import SignupForm from "../login/SignupForm.jsx";
 class Links extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { popup: false, signup: false };
+    this.state = { popup: false, signup: false, loggedIn: false };
   }
-  closeLoginPopup = () => {
-    this.setState({ popup: false });
+  closeLoginPopup = loggedIn => {
+    this.setState({ popup: false, loggedIn: loggedIn });
   };
   closeSignup = () => {
     this.setState({ signup: false });
@@ -79,6 +79,16 @@ class Links extends React.Component {
     }
   }
 
+  logout = () => {
+    fetch("/logout")
+      .then(res => res.json())
+      .then(res => {
+        if (res.status) {
+          this.setState({ loggedIn: false });
+        }
+      });
+  };
+
   render() {
     return (
       <div className="navbarmains">
@@ -89,15 +99,25 @@ class Links extends React.Component {
           MENU
         </a>
         <a href="/cart">ORDER</a>
-
         <a href="#">DELIVERY</a>
         <a href="/">ABOUT</a>
-        <a href="#" onClick={() => this.setState({ popup: true })}>
-          LOGIN
-        </a>
-        <a href="#" onClick={() => this.setState({ signup: true })}>
-          SIGNUP
-        </a>
+        {!this.state.loggedIn ? (
+          <span>
+            <a href="#" onClick={() => this.setState({ popup: true })}>
+              LOGIN
+            </a>
+            <a href="#" onClick={() => this.setState({ signup: true })}>
+              SIGNUP
+            </a>
+          </span>
+        ) : (
+          <span>
+            <a href="#" onClick={this.logout}>
+              LOGOUT
+            </a>
+          </span>
+        )}
+
         <i id="searchbutton" className="fa fa-search fa" />
         <input />
 
