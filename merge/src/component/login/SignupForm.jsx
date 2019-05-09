@@ -25,7 +25,7 @@ export default class SignupForm extends Component {
     data.append("username", this.state.username);
 
     data.append("password", this.state.password);
-    fetch("http://localhost:4000/signup", {
+    fetch("/signup", {
       method: "POST",
       body: data,
       credentials: "include"

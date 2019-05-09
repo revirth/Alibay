@@ -11,7 +11,7 @@ class Itempage extends Component {
     };
   }
   componentDidMount = async () => {
-    let response = await fetch(`http://localhost:4000/items/${this.props.id}`);
+    let response = await fetch(`/items/${this.props.id}`);
     let data = await response.json();
 
     this.setState({ foundItem: data });

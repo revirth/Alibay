@@ -5,53 +5,53 @@ import "./cartBar.css";
 import "./style.css";
 class UnconnectedCartBar extends React.Component {
   componentDidMount = () => {
-    this.getCart()
-  }
-  
+    this.getCart();
+  };
+
   getCart = () => {
-    fetch("http://localhost:4000/cartItems", { method: "GET" })
-    .then(headers => {
-      return headers.text();
-    })
-    .then(body => {
-      this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
-    });
-  }
+    fetch("/cartItems", { method: "GET" })
+      .then(headers => {
+        return headers.text();
+      })
+      .then(body => {
+        this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+      });
+  };
 
   render() {
-    this.getCart()
+    this.getCart();
     return (
       <div className="footer row">
         <div className="equal-width" />
         <div className="equal-width wrapper-center">
           <div className="child-center">
-          <div className="column text-title">Cart :</div>
-          <div className="column number"> {this.props.number}</div>
-          <div className="column">
-            <div className="height100">
-              <img
-                src="https://image.flaticon.com/icons/svg/60/60992.svg"
-                height="15px"
-                alt=""
-              />
+            <div className="column text-title">Cart :</div>
+            <div className="column number"> {this.props.number}</div>
+            <div className="column">
+              <div className="height100">
+                <img
+                  src="https://image.flaticon.com/icons/svg/60/60992.svg"
+                  height="15px"
+                  alt=""
+                />
+              </div>
+              <div className="text">items</div>
             </div>
-            <div className="text">items</div>
-          </div>
           </div>
         </div>
         <div className="column equal-width wrapper-center">
           <div className="child-center">
-          <div className="column text-title">Total: </div>
-          <div className="column number">${this.props.total.toFixed(2)}</div>
+            <div className="column text-title">Total: </div>
+            <div className="column number">${this.props.total.toFixed(2)}</div>
           </div>
         </div>
         <div className="column equal-width wrapper-center">
-        <div className="child-center">
-          <Link to="/cart/">
-            <button className="view-cart-button" onClick={this.onClickHandle}>
-              View Cart
-            </button>
-          </Link>
+          <div className="child-center">
+            <Link to="/cart/">
+              <button className="view-cart-button" onClick={this.onClickHandle}>
+                View Cart
+              </button>
+            </Link>
           </div>
         </div>
         <div className="equal-width" />
