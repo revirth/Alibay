@@ -84,12 +84,47 @@ body{
    
    
    }
+
+//    <div className="socialmedias">
+//    <i className="facebooks" className="fab fa-facebook-square"></i>
+//    <i className="twitters" className="fab fa-twitter-square"></i>
+//    <i className="instagrams" className="fab fa-instagram"></i>
+// </div>
+
+
    .socialmedias{
-   i{
-      color:#3B5A98;
+   i.fa-facebook-square{
+     
       font-size: 5em;
       transition:1s;
       padding-left:20%;
+
+       
+         color:#3B5A98;
+      
+     
+   }
+   i.fa-twitter-square{
+     
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+
+       
+         color:#1EA1F2;
+      
+     
+   }
+   i.fa-instagram{
+     
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+
+       
+         color:#EA0B57;
+      
+     
    }
    
    i:hover{
