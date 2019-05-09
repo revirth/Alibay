@@ -29,7 +29,7 @@ class Itempage extends Component {
               <div>
                 <img
                   src={this.state.foundItem.imgUrl}
-                  class="w-100 f5 measure"
+                  class="w-100 f5 measure productimg"
                   alt="Photo of outer space"
                 />
               </div>
@@ -102,6 +102,7 @@ class Itempage extends Component {
                 </fieldset>
               </form>
             </div>
+            <div className="footergap" />
           </div>
         </div>
       </div>
