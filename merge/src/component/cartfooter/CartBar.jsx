@@ -10,7 +10,7 @@ class UnconnectedCartBar extends React.Component {
         return headers.text();
       })
       .then(body => {
-        let items = [
+/*        let items = [
           {
             itemId: 1,
             itemName: "dishe1",
@@ -26,7 +26,8 @@ class UnconnectedCartBar extends React.Component {
             itemQuantity: 1
           }
         ];
-        this.props.dispatch({ type: "FillCart", cartItems: items });
+        console.log(body)*/
+        this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
       });
   }
 
