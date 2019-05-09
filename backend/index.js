@@ -262,10 +262,7 @@ app.get("/cartItems", async (req, res) => {
     });
     return cartItem;
   });
-  console.log("++++++++++++++++++++++++++++++++++++++++++", cartItems);
-  console.log("++++++++++++++++++++++++++++++++++++++++++")
   process.env.NODE_ENV === "development" && res.send(JSON.stringify(cartItems));
-  //  res.send(await CART.find({}).toArray());
 });
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -317,9 +314,9 @@ app.post("/addCartItem", upload.none(), async (req, res) => {
 })
 
 app.delete("/deleteCartItem", upload.none(), async (req, res) => {
-  console.log(req.body.cartItemId)
   let _id = ObjectId(req.body.cartItemId)
   CART.deleteOne({"_id": _id}, function(err, obj) {
     if (err) throw err;
     console.log("1 document deleted")})
+    res.send(JSON.stringify({succesfull: true}))
 })

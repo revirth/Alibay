@@ -26,10 +26,11 @@ class UnConnectedCart extends React.Component {
   onClickRemoveItem = e => {
     let data = new FormData()
     data.append("cartItemId", e.target.id )
+    console.log()
     fetch("http://localhost:3000/deleteCartItem", { method: "DELETE", body: data}).then( headers => {
+      console.log("Delete")
       return headers.text()
     }).then( body => {
-      console.log("BODY++++++++++++++++++++++++++++++++++++++++==")
       let result = true
       if(result){
         fetch("http://localhost:4000/cartItems", { method: "GET" }).then(headers => {
@@ -49,9 +50,9 @@ class UnConnectedCart extends React.Component {
     return (
       <div className="general-margin">
         <h4>Your Items:</h4>
-        {this.props.items.map(item => {
+        {this.props.items.map((item) => {
           return (
-            <div className="item-cell-width">
+            <div key={item.cartItemId} className="item-cell-width">
               <div className="item-in-column">
                 <div className="image photo-width">
                   <img src={item.itemImage} height="150px" width= "150px" alt="" />
@@ -97,7 +98,7 @@ class UnConnectedCart extends React.Component {
         })}
         <div className="total">Total: {total.toFixed(2)}</div>
         <div className="parent-horizontal">
-          <div classname="button-right">
+          <div className="button-right">
             <button
               className="checkout-button f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow"
               onClick={this.onClickHandle}
@@ -112,7 +113,6 @@ class UnConnectedCart extends React.Component {
 }
 
 let mapStateToProps = state => {
-  console.log(state.cartItems)
   return { items: state.cartItems };
 };
 
