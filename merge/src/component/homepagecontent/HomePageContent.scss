@@ -84,9 +84,9 @@ body{
    
    
    }
-   
+   .socialmedias{
    i{
-      color:#037B55;
+      color:#3B5A98;
       font-size: 5em;
       transition:1s;
       padding-left:20%;
@@ -96,11 +96,15 @@ body{
       font-size: 6em;
    
    }
- i #facebooks{
-      color:#3B5A98;
-   }
-   #instagrams{}
-   #twitters{}
+
+}
+//  #facebooks
+//    #3B5A98
+
+// #instagrams
+// #EA0B57
+   // #twitters
+   // #1EA1F2
    
    .box1 p{
    padding-top:10px;
@@ -140,5 +144,19 @@ body{
    }
    .spaceforfooter{
      padding:100px;
+   }
+}
+
+.services{
+   i{
+      color:#037B55;
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+   }
+   
+   i:hover{
+      font-size: 6em;
+   
    }
 }

@@ -23,7 +23,8 @@ hr {
 
 .information-in-row {
   display: flex;
-  orientation: row
+  orientation: row;
+  width: 100%
 }
 
 .parent {
@@ -36,7 +37,7 @@ hr {
 }
 
 .item-cell-width {
-  width: fit-content
+  width: 100% 
 }
 
 .subtotal {
@@ -91,4 +92,24 @@ hr {
 .parent-horizontal {
   display: flex;
   justify-content: flex-end
+}
+
+.remove-width{
+  width: 3%
+}
+
+.subtotal-width{
+  width: 7%
+}
+
+.quantity-width{
+  width: 5%
+}
+
+.name-price-width{
+  width: 100%
+}
+
+.photo-width{
+  width: 15%
 }
