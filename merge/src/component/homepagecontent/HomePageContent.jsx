@@ -30,9 +30,9 @@ class HomePageContent extends React.Component {
                     </div>
                 </div>
                 <div className="socialmedias">
-                    <i className="fab fa-facebook-square"></i>
-                    <i className="fab fa-twitter-square"></i>
-                    <i className="fab fa-instagram"></i>
+                    <i id="facebooks" className="fab fa-facebook-square"></i>
+                    <i id="twitters" className="fab fa-twitter-square"></i>
+                    <i id="instagrams" className="fab fa-instagram"></i>
                 </div>
 
                 <div className="row align-items-center" id="blockof4">

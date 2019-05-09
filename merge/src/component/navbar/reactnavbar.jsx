@@ -14,7 +14,7 @@ class Links extends React.Component {
   render() {
     return (
       <div className="navbarmains">
-        <a href="#">NUTRITION FINE FOURCHETTE</a>
+        <a href="#" className="titles">Nutrition Fine Fourchette</a>
         <a href="#" onClick={this.menuToggle}>
           MENU
         </a>
@@ -35,7 +35,7 @@ class Links extends React.Component {
 export default class Navbar extends React.Component {
   render() {
     return (
-      <nav>
+      <nav className="fixednav">
         <div className="navWide">
           <div className="wideDiv">
             <Links />

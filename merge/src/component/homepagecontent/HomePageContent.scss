@@ -18,7 +18,8 @@ body{
    }
    
    /* scocial medias */
-   .socialmedias{
+
+  .socialmedias{
     
      margin-top:200px;
      margin-bottom:200px;
@@ -29,6 +30,8 @@ body{
       display:flex;
       justify-content:space-around;
    }
+   
+
    /* style for text blockof3 */
    
    #blockof3{
@@ -93,6 +96,11 @@ body{
       font-size: 6em;
    
    }
+ i #facebooks{
+      color:#3B5A98;
+   }
+   #instagrams{}
+   #twitters{}
    
    .box1 p{
    padding-top:10px;
