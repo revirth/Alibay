@@ -10,32 +10,17 @@ class UnconnectedCartBar extends React.Component {
         return headers.text();
       })
       .then(body => {
-/*        let items = [
-          {
-            itemId: 1,
-            itemName: "dishe1",
-            itemImage: "image1.jpg",
-            itemPrice: "10.81",
-            itemQuantity: 1
-          },
-          {
-            itemId: 2,
-            itemName: "dishe2",
-            itemImage: "image2.jpg",
-            itemPrice: "20.56",
-            itemQuantity: 1
-          }
-        ];
-        console.log(body)*/
         this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
       });
+   //   this.props.dispatch({ type: "FillCart"});
   }
 
   render() {
     return (
       <div className="footer row">
         <div className="equal-width" />
-        <div className="equal-width">
+        <div className="equal-width wrapper-center">
+          <div className="child-center">
           <div className="column text-title">Cart :</div>
           <div className="column number"> {this.props.number}</div>
           <div className="column">
@@ -48,17 +33,22 @@ class UnconnectedCartBar extends React.Component {
             </div>
             <div className="text">items</div>
           </div>
+          </div>
         </div>
-        <div className="column equal-width">
+        <div className="column equal-width wrapper-center">
+          <div className="child-center">
           <div className="column text-title">Total: </div>
           <div className="column number">${this.props.total.toFixed(2)}</div>
+          </div>
         </div>
-        <div className="column equal-width">
+        <div className="column equal-width wrapper-center">
+        <div className="child-center">
           <Link to="/cart/">
             <button className="view-cart-button" onClick={this.onClickHandle}>
               View Cart
             </button>
           </Link>
+          </div>
         </div>
         <div className="equal-width" />
       </div>
