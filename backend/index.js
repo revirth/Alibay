@@ -101,9 +101,15 @@ app.post("/signup", upload.none(), async (req, res) => {
 });
 
 app.get("/items", upload.none(), async (req, res) => {
-  console.log("TCL: /items", req.body);
+  console.log("TCL: /items", req.query);
 
-  let docs = await ITEMS.find({}).toArray();
+  const query = req.query.search
+    ? {
+        name: { $regex: req.query.search, $options: "i" }
+      }
+    : {};
+
+  let docs = await ITEMS.find(query).toArray();
 
   console.log("TCL: /items", docs);
 
@@ -209,20 +215,24 @@ app.put("/reviews/:reviewId", upload.none(), async (req, res) => {
 });
 
 app.get("/cartItems", async (req, res) => {
-  
-  let cart = await CART.find({}).toArray()
-  let items = await ITEMS.find({}).toArray()
+  let cart = await CART.find({}).toArray();
+  let items = await ITEMS.find({}).toArray();
   let cartItems = cart.map(element => {
-    let cartItem = {}
-    items.forEach( item => {
-      if(ObjectId(item._id).toString() === element.itemId){
-        cartItem = {itemId: ObjectId(item._id).toString(), itemName: item.name, itemImage: item.imgUrl, itemPrice: item.price, itemQuantity: element.quantity }
+    let cartItem = {};
+    items.forEach(item => {
+      if (ObjectId(item._id).toString() === element.itemId) {
+        cartItem = {
+          itemId: ObjectId(item._id).toString(),
+          itemName: item.name,
+          itemImage: item.imgUrl,
+          itemPrice: item.price,
+          itemQuantity: element.quantity
+        };
       }
-    })
-    return cartItem
-    })
-  console.log("cartItems",cartItems)
-  process.env.NODE_ENV === "development" &&
-  res.send(JSON.stringify(cartItems))
+    });
+    return cartItem;
+  });
+  console.log("cartItems", cartItems);
+  process.env.NODE_ENV === "development" && res.send(JSON.stringify(cartItems));
   //  res.send(await CART.find({}).toArray());
 });

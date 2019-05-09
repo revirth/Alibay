@@ -17,7 +17,8 @@ export default class App extends Component {
   }
 
   componentDidMount = async () => {
-    let response = await fetch(`http://localhost:4000/items`);
+    let fetchUrl = `http://localhost:4000/items${window.location.search}`;
+    let response = await fetch(fetchUrl);
     let data = await response.json();
 
     if (Array.isArray(data)) this.setState({ items: data });
