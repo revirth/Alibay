@@ -17,7 +17,7 @@ class HomePageContent extends React.Component {
             data-jsx="2165040243"
             data-reactid="74"
             data-vscid="4rvi0manm"
-            width="1280"
+            width="100%"
             height="780"
           />
         </div>
