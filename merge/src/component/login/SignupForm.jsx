@@ -61,6 +61,7 @@ export default class SignupForm extends Component {
                 placeholder="Enter Your Name"
                 onChange={this.handleUsername}
                 className="login-field"
+                required
               />
 
               <input
@@ -68,6 +69,7 @@ export default class SignupForm extends Component {
                 placeholder="Enter Password"
                 onChange={this.handlePassword}
                 className="login-field"
+                required
               />
 
               <input

@@ -57,12 +57,14 @@ export default class LoginPopup extends Component {
                 placeholder="Enter Username"
                 onChange={this.handleUsername}
                 className="login-field"
+                required
               />
               <input
                 type="password"
                 placeholder="Enter Password"
                 onChange={this.handlePassword}
                 className="login-field"
+                required
               />
               <input
                 className="btn sub f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow loginicon"
