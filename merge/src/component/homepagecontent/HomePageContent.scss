@@ -84,9 +84,9 @@ body{
    
    
    }
-   
+   .socialmedias{
    i{
-      color:#037B55;
+      color:#3B5A98;
       font-size: 5em;
       transition:1s;
       padding-left:20%;
@@ -96,6 +96,8 @@ body{
       font-size: 6em;
    
    }
+
+}
 //  #facebooks
 //    #3B5A98
 
@@ -142,5 +144,19 @@ body{
    }
    .spaceforfooter{
      padding:100px;
+   }
+}
+
+.services{
+   i{
+      color:#037B55;
+      font-size: 5em;
+      transition:1s;
+      padding-left:20%;
+   }
+   
+   i:hover{
+      font-size: 6em;
+   
    }
 }
