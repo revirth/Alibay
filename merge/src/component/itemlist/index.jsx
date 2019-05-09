@@ -4,8 +4,9 @@ import "./style.css";
 import React, { Component } from "react";
 import Product from "./product.jsx";
 import { item } from "./items.js";
+import {connect} from 'react-redux'
 
-export default class App extends Component {
+class UnconnectedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +17,7 @@ export default class App extends Component {
   }
 
   componentDidMount = async () => {
-    let fetchUrl = `http://localhost:4000/items${window.location.search}`;
+    let fetchUrl = `/items${window.location.search}`;
     let response = await fetch(fetchUrl);
     let data = await response.json();
 
@@ -28,7 +29,18 @@ export default class App extends Component {
   handleAddFunc = ( itemId) => {
     let data = new FormData()
     data.append("itemId", itemId)
-      fetch("http://localhost:4000/addCartItem", { method: "POST", body: data})
+      fetch("http://localhost:4000/addCartItem", { method: "POST", body: data}).then( headers => {
+        return headers.text()
+      }).then( body => {
+        let result = true
+        if(result){
+          fetch("http://localhost:4000/cartItems", { method: "GET" }).then(headers => {
+             return headers.text();
+                                                                                      }).then(body => {
+      this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+                                                                                                      })
+        }
+      })
   };
 
   onToken = token => {
@@ -57,4 +69,11 @@ export default class App extends Component {
   }
 }
 
+let mapStatetoProps = (state) => {
+  return state
+}
+
+let app = connect(mapStatetoProps)(UnconnectedApp)
+
+export default app
 // ReactDOM.render(<App />, document.getElementById("root"));

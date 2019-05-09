@@ -26,7 +26,7 @@ export default class LoginPopup extends Component {
     let data = new FormData();
     data.append("username", this.state.username);
     data.append("password", this.state.password);
-    fetch("http://localhost:4000/login", {
+    fetch("/login", {
       method: "POST",
       body: data,
       credentials: "include"
