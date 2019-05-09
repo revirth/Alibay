@@ -4,18 +4,22 @@ import { Link } from "react-router-dom";
 import "./cartBar.css";
 import "./style.css";
 class UnconnectedCartBar extends React.Component {
-  componentDidMount() {
+  componentDidMount = () => {
+    this.getCart()
+  }
+  
+  getCart = () => {
     fetch("http://localhost:4000/cartItems", { method: "GET" })
-      .then(headers => {
-        return headers.text();
-      })
-      .then(body => {
-        this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
-      });
-   //   this.props.dispatch({ type: "FillCart"});
+    .then(headers => {
+      return headers.text();
+    })
+    .then(body => {
+      this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+    });
   }
 
   render() {
+    this.getCart()
     return (
       <div className="footer row">
         <div className="equal-width" />
