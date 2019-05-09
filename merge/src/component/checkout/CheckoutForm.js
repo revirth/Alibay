@@ -33,6 +33,7 @@ class CheckoutForm extends Component {
     if (response.ok) console.log("Purchase Complete!");
   }
 
+
   render() {
     if (this.state.complete) return <h1 > Purchase Complete < /h1>;
 
