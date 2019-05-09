@@ -23,17 +23,6 @@ let reducer = (state, action) => {
   }
 
   if(action.type === "FillCart") {
-
- /*   fetch("http://localhost:4000/cartItems", { method: "GET" })
-      .then(headers => {
-        return headers.text();
-      })
-      .then(body => {
-        let cartItems = JSON.parse(body)
-        console.log("body: ", cartItems)
-        return {...state, cartItems: cartItems}
-      });*/
-
     return {...state, cartItems: action.cartItems}
   }
 

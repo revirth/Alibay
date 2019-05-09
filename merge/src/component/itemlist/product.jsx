@@ -33,7 +33,7 @@ const Product = ({ _id, name, description, imgUrl, price, addFunc }) => {
         <div className="btn1">
           <button
             className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green bn grow btncart"
-            onClick={() => addFunc()}
+            onClick={() => addFunc(_id)}
           >
             Add to cart
             <i class="fas fa-cart-plus" />

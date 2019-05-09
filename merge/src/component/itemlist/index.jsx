@@ -25,7 +25,12 @@ export default class App extends Component {
     console.table(data);
   };
 
-  handleAddFunc = product => {};
+  handleAddFunc = ( itemId) => {
+    let data = new FormData()
+    data.append("itemId", itemId)
+      fetch("http://localhost:4000/addCartItem", { method: "POST", body: data})
+  };
+
   onToken = token => {
     fetch("/save-stripe-token", {
       method: "POST",
