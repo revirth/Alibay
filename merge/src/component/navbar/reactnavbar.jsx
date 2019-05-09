@@ -3,6 +3,9 @@ import "./reactnavbar.scss";
 import Fade from "react-reveal/Fade";
 import { connect } from "react-redux";
 
+import LoginPopup from "../login/LoginPopup.jsx";
+import SignupForm from "../login/SignupForm.jsx";
+
 // let Links = (props) => {
 
 //   const loginOrProfile = (login) => {
@@ -49,6 +52,16 @@ import { connect } from "react-redux";
 //   };
 
 class Links extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { popup: false, signup: false };
+  }
+  closeLoginPopup = () => {
+    this.setState({ popup: false });
+  };
+  closeSignup = () => {
+    this.setState({ signup: false });
+  };
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -79,10 +92,19 @@ class Links extends React.Component {
 
         <a href="#">DELIVERY</a>
         <a href="/">ABOUT</a>
-        <a href="/login">LOGIN</a>
-        <a href="/login">SIGNUP</a>
+        <a href="#" onClick={() => this.setState({ popup: true })}>
+          LOGIN
+        </a>
+        <a href="#" onClick={() => this.setState({ signup: true })}>
+          SIGNUP
+        </a>
         <i id="searchbutton" className="fa fa-search fa" />
         <input />
+
+        {this.state.popup ? (
+          <LoginPopup onClose={this.closeLoginPopup} />
+        ) : null}
+        {this.state.signup ? <SignupForm onClose={this.closeSignup} /> : null}
       </div>
     );
   }
