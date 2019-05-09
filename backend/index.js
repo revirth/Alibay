@@ -266,3 +266,11 @@ app.get("/charges", async (req, res) => {
 
   res.json(list);
 });
+app.post("/addCartItem", upload.none(), async (req, res) => {
+  let itemId = req.body.itemId
+  let newCartItem = {itemId: itemId, quantity: 1, userId: "5cd0ae661c9d440000de172c"}
+  await CART.insertOne(newCartItem);
+  res.send(JSON.stringify({successfull: true}))
+
+
+})
