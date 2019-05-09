@@ -4,10 +4,13 @@ let reducer = (state, action) => {
   if (action.type === "ChangeQuantity") {
     return {
       ...state,
-      cartItems: state.cartItems.map(item =>
-        item.itemId === parseInt(action.itemId)
-          ? { ...item, itemQuantity: parseInt(action.quantity) }
-          : item
+      cartItems: state.cartItems.map(item => {
+        if(item.itemId === action.itemId){
+          return { ...item, itemQuantity: parseInt(action.quantity) }
+                                                   } else{
+          return item
+                                                         }
+                                             }
       )
     };
   }

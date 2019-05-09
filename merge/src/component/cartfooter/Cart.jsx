@@ -5,7 +5,6 @@ import "./style.css";
 
 class UnConnectedCart extends React.Component {
   onChangeHandleQuantity = e => {
-    console.log(e.target.value)
     this.props.dispatch({
       type: "ChangeQuantity",
       itemId: e.target.id,
@@ -29,18 +28,19 @@ class UnConnectedCart extends React.Component {
           return (
             <div className="item-cell-width">
               <div className="item-in-column">
-                <div className="image">
+                <div className="image photo-width">
                   <img src={item.itemImage} height="150px" width= "150px" alt="" />
                 </div>
-                <div className="information-in-row">
+                <div className="information-in-row name-price-width">
                   <div>
                     <div>Name: {item.itemName}</div>
                     <hr />
                     <div className="stick_bottom">${item.itemPrice}</div>
                   </div>
-                  <div className="parent">
+                  </div>
+                  <div className="parent quantity-width">
                     <div className="stick_bottom">
-                      Qt:{" "}
+                      Qty:{" "}
                       <input
                         className="input-number"
                         type="number"
@@ -49,9 +49,8 @@ class UnConnectedCart extends React.Component {
                         onChange={this.onChangeHandleQuantity}
                       />
                     </div>
-                  </div>
                 </div>
-                <div className="parent">
+                <div className="parent subtotal-width">
                   <div className="stick_bottom subtotal">
                     Subtotal:{" "}
                     {(parseFloat(item.itemPrice) * item.itemQuantity).toFixed(
@@ -59,7 +58,7 @@ class UnConnectedCart extends React.Component {
                     )}
                   </div>
                 </div>
-                <div>
+                <div className="remove-width">
                   <i
                     className="fa fa-times"
                     id={item.itemId}
@@ -88,6 +87,7 @@ class UnConnectedCart extends React.Component {
 }
 
 let mapStateToProps = state => {
+  console.log(state.cartItems)
   return { items: state.cartItems };
 };
 
