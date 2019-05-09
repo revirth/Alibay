@@ -3,7 +3,7 @@ import {
 } from "redux";
 
 let reducer = (state, action) => {
-  if (action.type === "ChangeQuantity") {
+  /*if (action.type === "ChangeQuantity") {
     return {
       ...state,
       cartItems: state.cartItems.map(item => {
@@ -17,7 +17,7 @@ let reducer = (state, action) => {
         }
       })
     };
-  }
+  }*/
 
   /* if (action.type === "RemoveItem") {
      let newItems = state.cartItems.filter( item => {

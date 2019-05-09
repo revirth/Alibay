@@ -3,6 +3,9 @@ import "./reactnavbar.scss";
 import Fade from "react-reveal/Fade";
 import { connect } from "react-redux";
 
+import LoginPopup from "../login/LoginPopup.jsx";
+import SignupForm from "../login/SignupForm.jsx";
+
 // let Links = (props) => {
 
 //   const loginOrProfile = (login) => {
@@ -49,6 +52,16 @@ import { connect } from "react-redux";
 //   };
 
 class Links extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { popup: false, signup: false, loggedIn: false };
+  }
+  closeLoginPopup = loggedIn => {
+    this.setState({ popup: false, loggedIn: loggedIn });
+  };
+  closeSignup = () => {
+    this.setState({ signup: false });
+  };
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -66,6 +79,16 @@ class Links extends React.Component {
     }
   }
 
+  logout = () => {
+    fetch("/logout")
+      .then(res => res.json())
+      .then(res => {
+        if (res.status) {
+          this.setState({ loggedIn: false });
+        }
+      });
+  };
+
   render() {
     return (
       <div className="navbarmains">
@@ -76,13 +99,32 @@ class Links extends React.Component {
           MENU
         </a>
         <a href="/cart">ORDER</a>
-
         <a href="#">DELIVERY</a>
         <a href="/">ABOUT</a>
-        <a href="/login">LOGIN</a>
-        <a href="/login">SIGNUP</a>
+        {!this.state.loggedIn ? (
+          <span>
+            <a href="#" onClick={() => this.setState({ popup: true })}>
+              LOGIN
+            </a>
+            <a href="#" onClick={() => this.setState({ signup: true })}>
+              SIGNUP
+            </a>
+          </span>
+        ) : (
+          <span>
+            <a href="#" onClick={this.logout}>
+              LOGOUT
+            </a>
+          </span>
+        )}
+
         <i id="searchbutton" className="fa fa-search fa" />
         <input />
+
+        {this.state.popup ? (
+          <LoginPopup onClose={this.closeLoginPopup} />
+        ) : null}
+        {this.state.signup ? <SignupForm onClose={this.closeSignup} /> : null}
       </div>
     );
   }

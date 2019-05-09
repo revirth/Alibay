@@ -39,7 +39,7 @@ export default class LoginPopup extends Component {
           alert("Incorrect Username or Password");
           return;
         } else {
-          this.props.onClose();
+          this.props.onClose(res.status);
         }
       });
   };
