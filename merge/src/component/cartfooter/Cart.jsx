@@ -4,6 +4,17 @@ import "./cart.css";
 import "./style.css";
 
 class UnConnectedCart extends React.Component {
+
+  componentDidMount = () => {
+    fetch("http://localhost:4000/cartItems", { method: "GET" })
+    .then(headers => {
+      return headers.text();
+    })
+    .then(body => {
+      this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+    });
+  }
+  
   onChangeHandleQuantity = e => {
     this.props.dispatch({
       type: "ChangeQuantity",
@@ -13,7 +24,21 @@ class UnConnectedCart extends React.Component {
   };
 
   onClickRemoveItem = e => {
-    this.props.dispatch({ type: "RemoveItem", itemId: e.target.id });
+    let data = new FormData()
+    data.append("cartItemId", e.target.id )
+    fetch("http://localhost:3000/deleteCartItem", { method: "DELETE", body: data}).then( headers => {
+      return headers.text()
+    }).then( body => {
+      console.log("BODY++++++++++++++++++++++++++++++++++++++++==")
+      let result = true
+      if(result){
+        fetch("http://localhost:4000/cartItems", { method: "GET" }).then(headers => {
+           return headers.text();
+                                                                                    }).then(body => {
+    this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+                                                                                                    })
+      }
+    })
   };
 
   render() {
@@ -61,7 +86,7 @@ class UnConnectedCart extends React.Component {
                 <div className="remove-width">
                   <i
                     className="fa fa-times"
-                    id={item.itemId}
+                    id={item.cartItemId}
                     onClick={this.onClickRemoveItem}
                   />
                 </div>

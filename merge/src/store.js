@@ -15,12 +15,12 @@ let reducer = (state, action) => {
     };
   }
 
-  if (action.type === "RemoveItem") {
+ /* if (action.type === "RemoveItem") {
     let newItems = state.cartItems.filter( item => {
       return item.itemId !== action.itemId
     })
     return {...state, cartItems: newItems}
-  }
+  }*/
 
   if(action.type === "FillCart") {
     return {...state, cartItems: action.cartItems}

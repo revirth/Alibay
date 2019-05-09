@@ -251,6 +251,7 @@ app.get("/cartItems", async (req, res) => {
     items.forEach(item => {
       if (ObjectId(item._id).toString() === element.itemId) {
         cartItem = {
+          cartItemId: ObjectId(element._id).toString(),
           itemId: ObjectId(item._id).toString(),
           itemName: item.name,
           itemImage: item.imgUrl,
@@ -261,7 +262,8 @@ app.get("/cartItems", async (req, res) => {
     });
     return cartItem;
   });
-  console.log("cartItems", cartItems);
+  console.log("++++++++++++++++++++++++++++++++++++++++++", cartItems);
+  console.log("++++++++++++++++++++++++++++++++++++++++++")
   process.env.NODE_ENV === "development" && res.send(JSON.stringify(cartItems));
   //  res.send(await CART.find({}).toArray());
 });
@@ -312,4 +314,12 @@ app.post("/addCartItem", upload.none(), async (req, res) => {
   }))
 
 
+})
+
+app.delete("/deleteCartItem", upload.none(), async (req, res) => {
+  console.log(req.body.cartItemId)
+  let _id = ObjectId(req.body.cartItemId)
+  CART.deleteOne({"_id": _id}, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted")})
 })
