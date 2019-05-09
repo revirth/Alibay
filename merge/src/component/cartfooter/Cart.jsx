@@ -16,17 +16,36 @@ class UnConnectedCart extends React.Component {
   }
   
   onChangeHandleQuantity = e => {
-    this.props.dispatch({
+
+    let data = new FormData()
+    data.append("cartItemId", e.target.id )
+    data.append("itemQuantity", e.target.value)
+    fetch("http://localhost:3000/updateCartItem", { method: "PUT", body: data}).then( headers => {
+      console.log("PUT")
+      return headers.text()
+    }).then( body => {
+      let result = true
+      if(result){
+        fetch("http://localhost:4000/cartItems", { method: "GET" }).then(headers => {
+           return headers.text();
+                                                                                    }).then(body => {
+    this.props.dispatch({ type: "FillCart", cartItems: JSON.parse(body) });
+                                                                                                    })
+      }
+    })
+
+   /* this.props.dispatch({
       type: "ChangeQuantity",
       itemId: e.target.id,
       quantity: e.target.value
-    });
+    });*/
+
+  
   };
 
   onClickRemoveItem = e => {
     let data = new FormData()
     data.append("cartItemId", e.target.id )
-    console.log()
     fetch("http://localhost:3000/deleteCartItem", { method: "DELETE", body: data}).then( headers => {
       console.log("Delete")
       return headers.text()
@@ -71,7 +90,7 @@ class UnConnectedCart extends React.Component {
                         className="input-number"
                         type="number"
                         value={item.itemQuantity}
-                        id={item.itemId}
+                        id={item.cartItemId}
                         onChange={this.onChangeHandleQuantity}
                       />
                     </div>

@@ -256,7 +256,7 @@ app.get("/cartItems", async (req, res) => {
           itemName: item.name,
           itemImage: item.imgUrl,
           itemPrice: item.price,
-          itemQuantity: element.quantity
+          itemQuantity: element.itemQuantity
         };
       }
     });
@@ -302,7 +302,7 @@ app.post("/addCartItem", upload.none(), async (req, res) => {
   let itemId = req.body.itemId
   let newCartItem = {
     itemId: itemId,
-    quantity: 1,
+    itemQuantity: 1,
     userId: "5cd0ae661c9d440000de172c"
   }
   await CART.insertOne(newCartItem);
@@ -318,5 +318,14 @@ app.delete("/deleteCartItem", upload.none(), async (req, res) => {
   CART.deleteOne({"_id": _id}, function(err, obj) {
     if (err) throw err;
     console.log("1 document deleted")})
+    res.send(JSON.stringify({succesfull: true}))
+})
+
+app.put("/updateCartItem", upload.none(), async (req, res) => {
+  let _id = ObjectId(req.body.cartItemId)
+  let quantity = req.body.itemQuantity
+  CART.updateOne({"_id": _id}, { $set: {"itemQuantity": quantity}}, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document updated")})
     res.send(JSON.stringify({succesfull: true}))
 })
