@@ -5,12 +5,12 @@ import "./cartBar.css";
 import "./style.css";
 class UnconnectedCartBar extends React.Component {
   componentDidMount() {
-    fetch("http://localhost:4000/cartItems", { method: "GET" })
+    fetch("/cartItems", { method: "GET" })
       .then(headers => {
         return headers.text();
       })
       .then(body => {
-/*        let items = [
+        /*        let items = [
           {
             itemId: 1,
             itemName: "dishe1",

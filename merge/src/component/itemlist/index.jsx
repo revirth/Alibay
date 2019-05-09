@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   componentDidMount = async () => {
-    let fetchUrl = `http://localhost:4000/items${window.location.search}`;
+    let fetchUrl = `/items${window.location.search}`;
     let response = await fetch(fetchUrl);
     let data = await response.json();
 
