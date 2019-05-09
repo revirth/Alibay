@@ -9,10 +9,11 @@
 .row {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 80px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
+  justify-content: center
 }
 
 .equal-width {
@@ -54,4 +55,13 @@
 
 .height100 {
   margin-top: 10px
+}
+
+.wrapper-center{
+  display: flex;
+  justify-content: center
+}
+
+.child-center{
+  align-self: center
 }
