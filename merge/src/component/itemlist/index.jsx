@@ -26,7 +26,7 @@ class UnconnectedApp extends Component {
     console.table(data);
   };
 
-  handleAddFunc = ( itemId) => {
+ /* handleAddFunc = ( itemId) => {
     let data = new FormData()
     data.append("itemId", itemId)
       fetch("http://localhost:4000/addCartItem", { method: "POST", body: data}).then( headers => {
@@ -41,7 +41,7 @@ class UnconnectedApp extends Component {
                                                                                                       })
         }
       })
-  };
+  };*/
 
   onToken = token => {
     fetch("/save-stripe-token", {
@@ -61,7 +61,8 @@ class UnconnectedApp extends Component {
       <div>
         <main className="pa3 pa5-ns flex flex-wrap">
           {this.state.items.map(p => (
-            <Product key={p.id} {...p} addFunc={this.handleAddFunc} />
+        //    <Product key={p.id} {...p} addFunc={this.handleAddFunc} />
+        <Product key={p.id} {...p} />
           ))}
         </main>
       </div>
